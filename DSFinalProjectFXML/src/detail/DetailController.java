@@ -91,7 +91,7 @@ public class DetailController implements Initializable{
     	addReview.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
-    			AddReviewController adder = new AddReviewController(restaurant);
+    			AddReviewController adder = new AddReviewController(new DetailWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), wrap.getRestaurant(),wrap.getOrder()));
     			adder.showStage();
     		}
     	});

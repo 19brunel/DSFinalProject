@@ -23,11 +23,11 @@
         <ChoiceBox fx:id="ratingDrop" layoutX="109.0" layoutY="65.0">
           <items>
             <FXCollections  fx:factory="observableArrayList">
-              <Integer fx:value="1" />
-              <Integer fx:value="2" />
-              <Integer fx:value="3" />
-              <Integer fx:value="4" />
-              <Integer fx:value="5" />
+              <String fx:value="1" />
+              <String fx:value="2" />
+              <String fx:value="3" />
+              <String fx:value="4" />
+              <String fx:value="5" />
             </FXCollections>
           </items>
         </ChoiceBox>
