@@ -19,10 +19,10 @@
             <Font name="Century Gothic" size="12.0" fx:id="x1" />
           </font>
         </Button>
-        <Button fx:id="doneButton" id="doneButton" font="$x1" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" text="DONE" />
-        <ChoiceBox layoutX="109.0" layoutY="65.0">
+        <Button fx:id="doneButton" id="doneButton" onAction="#submit" font="$x1" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" text="DONE" />
+        <ChoiceBox fx:id="ratingDrop" layoutX="109.0" layoutY="65.0">
           <items>
-            <FXCollections fx:id="ratingDrop" fx:factory="observableArrayList">
+            <FXCollections  fx:factory="observableArrayList">
               <Integer fx:value="1" />
               <Integer fx:value="2" />
               <Integer fx:value="3" />
@@ -31,7 +31,7 @@
             </FXCollections>
           </items>
         </ChoiceBox>
-        <TextArea layoutX="17.0" layoutY="131.0" prefHeight="218.0" prefWidth="566.0" wrapText="true" />
+        <TextArea fx:id="description" layoutX="17.0" layoutY="131.0" prefHeight="218.0" prefWidth="566.0" wrapText="true" />
         <Text fill="#e31c60" layoutX="168.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WRITE REVIEW">
           <font>
             <Font name="Century Gothic" size="40.0" />

@@ -91,7 +91,7 @@ public class DetailController implements Initializable{
     	addReview.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
-    			AddReviewController adder = new AddReviewController();
+    			AddReviewController adder = new AddReviewController(restaurant);
     			adder.showStage();
     		}
     	});
