@@ -1,6 +1,7 @@
 package database;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +45,7 @@ public class DatabaseReader {
 		}
 		return users;
 	}
+	
 
 	public ArraySortedList<Restaurant> readRestaurantDatabase(String url) {
 		ArraySortedList<Restaurant> restaurants = new ArraySortedList<Restaurant>();
@@ -107,6 +109,82 @@ public class DatabaseReader {
 								ratings.add(
 										new Rating(Integer.parseInt(split3[x].split("-")[0]), split3[x].split("-")[1]));
 							}
+							break;
+						case 7:
+							line = reader.readLine();
+							String[] split4 = line.split(";");
+							for (int x = 0; x < split4.length; x++) {
+								menu.add(
+										new FoodItem(split4[x].split(":")[1].split("-")[0], split4[x].split(":")[1].split("-")[1],Double.parseDouble(split4[x].split(":")[0])));
+							}
+							break;
+						}
+					}
+					restaurants.add(new Restaurant(name, des, icon, banner, address, new PhoneNumber(pn), web, cuisine, dinning, priceRng, hoursOfOp, ratings, menu));
+				}
+			}
+		} catch (IOException x) {
+			System.err.format("IOException: %s%n", x);
+		}
+
+		return restaurants;
+	}
+	
+	public ArraySortedList<Restaurant> writeRestaurantDatabase(String url, ArraySortedList<Restaurant> r) {
+		ArraySortedList<Restaurant> restaurants = r;
+		restaurants.reset();
+		Charset charset = Charset.forName("US-ASCII");
+		//Charset charset = Charset.forName("UTF-8");
+		Path path = FileSystems.getDefault().getPath(url);
+		try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
+			String line = null;
+			String name = null;
+			String des = null;
+			String icon = null;
+			String banner = null;
+			String address = null;
+			String pn = null;
+			String web = null;
+			String cuisine = null;
+			String dinning = null;
+			PriceRange priceRng = null;
+			HoursOfOperation hoursOfOp = null;
+			ArraySortedList<Rating> ratings = new ArraySortedList<Rating>();
+			ArraySortedList<FoodItem> menu = new ArraySortedList<FoodItem>();
+			Restaurant res = null;
+			for (int x = 0; x<restaurants.size(); x++) {
+				res = restaurants.getNext();
+				ratings = res.getRatings();
+				menu = res.getMenu();
+				writer.write("---");
+					for (int i = 0; i < 8; i++) {
+						switch (i) {
+						case 0:
+							writer.write(res.getName());
+							break;
+						case 1:
+							writer.write(res.getDescription());
+							break;
+						case 2:
+							writer.write(res.getIconURL()+","+res.getBannerURL());
+							break;
+						case 3:
+							writer.write(res.getAddress());
+							break;
+						case 4:
+							writer.write(res.getPhoneNumber()+","+res.getWebsite()+","+res.getCuisineType()+","+res.getDinningType()+","+res.getPriceRange().getMin()+","+res.getPriceRange().getMax());
+							break;
+						case 5:
+							writer.write(res.getHoursOfOp().getMonday()+","+res.getHoursOfOp().getTuesday()+","+res.getHoursOfOp().getWednesday()+","+res.getHoursOfOp().getThursday()+","+res.getHoursOfOp().getFriday()+","+res.getHoursOfOp().getSaturday()+","+res.getHoursOfOp().getSunday());
+							break;
+						case 6:
+							String toPrint = "";
+							Rating curRat = null;
+							for (int y = 0; y < ratings.size(); y++) {
+								curRat = ratings.getNext();
+								toPrint+=curRat.getRating()+"-"+curRat.getDescription()+";";
+							}
+							writer.write(toPrint);
 							break;
 						case 7:
 							line = reader.readLine();
