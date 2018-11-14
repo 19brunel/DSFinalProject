@@ -19,6 +19,7 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -86,11 +87,11 @@ public class DetailController implements Initializable{
     	sideBar.setStyle("-fx-background-color: #efefef;");
     	address = new Text(restaurant.getAddress());
     	reviewTitle = new Text("REVIEWS");
-    	addReview = new Button("ADD REVIEW");
+    	addReview = new Button("WRITE A REVIEW");
     	addReview.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
-    			System.out.println("Adding Review");
+    			
     		}
     	});
     	//addReview.setOnAction();
@@ -164,7 +165,6 @@ public class DetailController implements Initializable{
                 return new ReviewListCell(wrap);
             }
         });
-		//Make the review list
 		restaurantScroll.setContent(container);
 		sideBar.setContent(order.getContainer());
 	}
