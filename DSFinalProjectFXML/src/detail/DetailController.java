@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,7 +51,7 @@ public class DetailController implements Initializable{
 	private ImageView banner;
 	private Text address;
 	private ListView<FoodItem> menuList;
-	private ListView<Rating> reviews;
+	private ListView<Rating> reviewList;
 	private DetailWrapper wrap;
 	private OrderController order;
 	private Text menuTitle;
@@ -86,10 +87,16 @@ public class DetailController implements Initializable{
     	address = new Text(restaurant.getAddress());
     	reviewTitle = new Text("REVIEWS");
     	addReview = new Button("ADD REVIEW");
+    	addReview.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			System.out.println("Adding Review");
+    		}
+    	});
     	//addReview.setOnAction();
     	reviewHeader = new HBox(reviewTitle, addReview);
     	menuList = new ListView<FoodItem>();
-    	reviews = new ListView<Rating>();
+    	reviewList = new ListView<Rating>();
     	switch(restaurant.getAvgRating()) {
         case 1:
         	rating.setImage(new Image("/starIcons/1star.png"));
@@ -115,7 +122,7 @@ public class DetailController implements Initializable{
     	imageContainer = new StackPane(banner, restaurantInfo);
     	imageContainer.setAlignment(Pos.BOTTOM_LEFT);
     	restaurantScroll = new ScrollPane();
-    	container = new VBox(imageContainer, menuTitle, menuList, reviewHeader, reviews);
+    	container = new VBox(imageContainer, menuTitle, menuList, reviewHeader, reviewList);
     	Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/detail/detail.fxml"));
@@ -139,6 +146,22 @@ public class DetailController implements Initializable{
             @Override
             public ListCell<FoodItem> call(ListView<FoodItem> listView) {
                 return new MenuListCell(wrap);
+            }
+        });
+		ObservableList<Rating> reviews = FXCollections.observableArrayList();
+		ArraySortedList<Rating> resRev = restaurant.getRatings();
+    	resRev.reset();
+    	Rating currentRev = null;
+    	for(int x =0; x<resRev.size();x++) {
+    		currentRev = resRev.getNext();
+    		//System.out.println(currentItem);
+    		reviews.add(currentRev);
+    	}
+    	reviewList.setItems(reviews);
+		reviewList.setCellFactory(new Callback<ListView<Rating>, ListCell<Rating>>() {
+            @Override
+            public ListCell<Rating> call(ListView<Rating> listView) {
+                return new ReviewListCell(wrap);
             }
         });
 		//Make the review list
