@@ -24,8 +24,8 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-    	LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase("C:\\Users\\Margaret\\Desktop\\Data Structures\\DSFinalProjectFXML\\src\\database\\userDB.txt"),new DatabaseReader().readRestaurantDatabase("C:\\Users\\Margaret\\Desktop\\Data Structures\\DSFinalProjectFXML\\src\\database\\restaurantDB.txt")));
+    public void start(Stage primaryStage) throws Exception { //C:\Users\Margaret\Desktop\Data Structures\DSFinalGit\DSFinalProject\DSFinalProjectFXML\src\database
+    	LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase("C:\\Users\\Margaret\\Desktop\\Data Structures\\DSFinalGit\\DSFinalProject\\DSFinalProjectFXML\\src\\database\\userDB.txt"),new DatabaseReader().readRestaurantDatabase("C:\\Users\\Margaret\\Desktop\\Data Structures\\DSFinalGit\\DSFinalProject\\DSFinalProjectFXML\\src\\database\\restaurantDB.txt")));
     	loginController.showStage();
     }
 }
