@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="648.0" prefWidth="1152.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <AnchorPane id="container" prefHeight="648.0" prefWidth="1152.0">
+      <children>
+        <AnchorPane layoutX="391.0" layoutY="174.0" minWidth="348.0" prefHeight="150.0" prefWidth="369.0">
+          <children>
+            <Text layoutX="0.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANT">
+              <fill>
+                <Color blue="0.259" green="0.259" red="0.259" fx:id="x2" />
+              </fill>
+              <font>
+                <Font size="35.0" fx:id="x1" />
+              </font>
+            </Text>
+            <Text font="$x1" layoutX="224.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR">
+              <fill>
+                <Color blue="0.376" green="0.110" red="0.890" fx:id="x4" />
+              </fill>
+            </Text>
+            <ImageView fitHeight="50.0" fitWidth="44.186044117761035" layoutX="162.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@icon.png" />
+              </image>
+            </ImageView>
+          </children>
+        </AnchorPane>
+        <AnchorPane layoutX="405.0" layoutY="322.0" prefHeight="200.0" prefWidth="342.0">
+          <children>
+            <TextField fx:id="username" layoutX="136.0" layoutY="22.0" prefWidth="174.0" />
+            <PasswordField fx:id="password" layoutX="136.0" layoutY="52.0" prefWidth="174.0" />
+            <Label layoutX="32.0" layoutY="18.0" text="USERNAME" textFill="$x2">
+              <font>
+                <Font size="20.0" fx:id="x3" />
+              </font>
+            </Label>
+            <Label font="$x3" layoutX="29.0" layoutY="48.0" text="PASSWORD" textFill="$x2" />
+            <Button id="loginButton" layoutX="108.0" layoutY="90.0" mnemonicParsing="false" onAction="#attemptLogin" style="-fx-background-color: #e31c60 ;&#10;-fx-border: none;&#10;-fx-background-radius: 0px;" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
+              <font>
+                <Font size="28.0" />
+              </font>
+            </Button>
+          </children>
+        </AnchorPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

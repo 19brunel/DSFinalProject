@@ -1,0 +1,25 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#container{
+	-fx-font-family: "Century Gothic";
+}
+.list-cell:empty {
+    visibility:hidden;
+}
+#restaurantScroll .list-cell:even {
+-fx-background-color: rgba(0,0,0,0);
+}
+#restaurantScroll .list-cell:odd {
+-fx-background-color: rgba(0,0,0,0);
+}
+#sideBar .list-cell:even {
+-fx-background-color: rgba(0,0,0,0);
+}
+#sideBar .list-cell:odd {
+-fx-background-color: rgba(0,0,0,0);
+}
+#sideBar {
+	-fx-background-color: #efefef;
+}
+#sideBarContainer {
+	-fx-background-color: #efefef;
+}

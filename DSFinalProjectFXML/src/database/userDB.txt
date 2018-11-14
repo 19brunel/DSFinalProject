@@ -1,0 +1,3 @@
+admin,password,Admin,admin@restaurantadvisor.java,2624444444,true
+leob,leosPass,Leo Brunette,leorbrunette@gmail.com,2629554821,false
+rmittal,tennis,Rajat Mittal,raj@gmail.com,2627777777,false

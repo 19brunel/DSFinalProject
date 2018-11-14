@@ -1,0 +1,18 @@
+---
+Vino Cappuccino
+This relaxed Italian restaurant features pizza, pasta, martinis & an occasional live piano player.
+/database/restaurantImages/vinoIcon.jpg,/database/restaurantImages/vinoBanner.jpg
+2848 N Brookfield Rd, Brookfield, WI 53045
+2627979061,www.vinocapp.com,Italian,Casual Dinning,8.95,19.65
+11AM-9PM,11AM-9PM,11AM-9PM,11AM-9PM,11AM-10PM,11AM-10PM,11AM-9PM
+5-Beautiful restaurant with amazing italian food.;4-The pizza is amazing, so is the pasta.;5-The food, the live piano. Perfect!
+8.95:Caponata-An authentic Sicilian spread of chopped eggplant, celery, onion, capers, in tomato sauce, warmed in the oven and topped with melted mozzarella. Served with our house-made crostini.;19.65:Vino's Signature 12"-Pesto sauce, pepperoni, salami, mortadella, olives, giardiniera, green peppers, mozzarella, provolone and asiago cheese blend.;11.95:Eggplant Gorgonzola-Eggplant stuffed with gorgonzola cheese and topped with tomato sauce and parmesan.
+---
+Tangled - Noodles and More
+This Asian restaurant features many traditional Asian dishes and serves 'the best Asian food'. 
+/database/restaurantImages/vinoIcon.jpg,/database/restaurantImages/vinoBanner.jpg
+1404 W Wells St, Milwaukee, WI
+4142104294, tangled-noodlesandmore.com, Chinese, Casual Dining, 7.39, 13.39
+10:00AM-9:00PM, 10:00AM-9:00PM, 10:00AM-9:00PM, 10:00AM-9:00PM, 10:00AM-9:00PM, 12:00AM-9:00PM, 12:00AM-9:00PM
+5-Love the soft noodles and variety of broths. Simple and practical.;4-Tangled has a nice atmosphere. The dumplings are impressive and General Tso chicken is both flavorful and reasonably priced.;4-Taiwanese beef noodles were amazing!!! Would definitely recommend.
+13.39: Chong Qing Beef Noodle - Specialty beef bowls, house noodle in Chong Qing style spicy broth with tender braised brisket, Shanghai Choy, sesame seeds, and crushed peanut.; 7.39: Tangled Veggie Bowl - House noodle with marinated tofu, Yunnan style mushroom, sweet sour slaw, cucumber, sweet corn kernel, diced tomato, green onion, with spicy or non-spicy sauce or soup.; 10.39: Tokyo Ramen - Tokyo style ramen in miso pork bone broth, chashu pork shoulder ,miso egg, marinated bamboo shoot, fish cake, Nori seaweed, sweet corn, green onion.
