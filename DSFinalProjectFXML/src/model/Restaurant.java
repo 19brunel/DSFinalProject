@@ -40,13 +40,13 @@ public class Restaurant implements Comparable{
 		ratings = r;
 		menu = f;
 	}
-	public int getAvgRating() {
-		int avgRating = 0;
+	public double getAvgRating() {
+		double avgRating = 0;
 		ratings.reset();
 		for(int i =0; i<ratings.size();i++) {
 			avgRating+=ratings.getNext().getRating();
 		}
-		return avgRating/ratings.size();
+		return ((double)(int)((avgRating/((double)ratings.size()))*10)/10);
 	}
 	public static int getId() {
 		return id;
@@ -162,7 +162,7 @@ public class Restaurant implements Comparable{
 
 	@Override
 	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+		Restaurant rest = (Restaurant)arg0;
+		return (int)(rest.getAvgRating()*10)-(int)(this.getAvgRating()*10);
 	}
 }

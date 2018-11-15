@@ -99,7 +99,7 @@ public class DetailController implements Initializable{
     	reviewHeader = new HBox(reviewTitle, addReview);
     	menuList = new ListView<FoodItem>();
     	reviewList = new ListView<Rating>();
-    	switch(restaurant.getAvgRating()) {
+    	switch((int)restaurant.getAvgRating()) {
         case 1:
         	rating.setImage(new Image("/starIcons/1star.png"));
         	break;

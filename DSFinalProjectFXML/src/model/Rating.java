@@ -23,7 +23,7 @@ public class Rating implements Comparable{
 	}
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+		Rating rat = (Rating)o;
+		return rat.getRating()-this.rating;
 	}
 }
