@@ -57,7 +57,7 @@ public class AddReviewController {
 		newRes.setRatings(newRat);
 		newDB.add(newRes);
 		DatabaseReader writer = new DatabaseReader();
-		writer.writeRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " "), newDB);
+		writer.writeRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src"), newDB);
 		//Call add review in the database writer class passing the restaurant, rating, description
 		
 		DetailController refreshedDetail = new DetailController(new DetailWrapper(wrap.getEvent(), wrap.getUser(), wrap.getUserDB(), newDB, newRes, wrap.getOrder()));
