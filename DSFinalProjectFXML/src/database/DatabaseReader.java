@@ -3,6 +3,8 @@ package database;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -29,7 +31,7 @@ public class DatabaseReader {
 		ArraySortedList<User> users = new ArraySortedList<User>();
 		String[] parameters = new String[6];
 		Charset charset = Charset.forName("US-ASCII");
-		//Charset charset = Charset.forName("UTF-8");
+		// Charset charset = Charset.forName("UTF-8");
 		Path path = FileSystems.getDefault().getPath(url);
 		System.out.println("Found path.");
 		try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
@@ -45,12 +47,11 @@ public class DatabaseReader {
 		}
 		return users;
 	}
-	
 
 	public ArraySortedList<Restaurant> readRestaurantDatabase(String url) {
 		ArraySortedList<Restaurant> restaurants = new ArraySortedList<Restaurant>();
 		Charset charset = Charset.forName("US-ASCII");
-		//Charset charset = Charset.forName("UTF-8");
+		// Charset charset = Charset.forName("UTF-8");
 		Path path = FileSystems.getDefault().getPath(url);
 		try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
 			String line = null;
@@ -114,13 +115,15 @@ public class DatabaseReader {
 							line = reader.readLine();
 							String[] split4 = line.split(";");
 							for (int x = 0; x < split4.length; x++) {
-								menu.add(
-										new FoodItem(split4[x].split(":")[1].split("-")[0], split4[x].split(":")[1].split("-")[1],Double.parseDouble(split4[x].split(":")[0])));
+								menu.add(new FoodItem(split4[x].split(":")[1].split("-")[0],
+										split4[x].split(":")[1].split("-")[1],
+										Double.parseDouble(split4[x].split(":")[0])));
 							}
 							break;
 						}
 					}
-					restaurants.add(new Restaurant(name, des, icon, banner, address, new PhoneNumber(pn), web, cuisine, dinning, priceRng, hoursOfOp, ratings, menu));
+					restaurants.add(new Restaurant(name, des, icon, banner, address, new PhoneNumber(pn), web, cuisine,
+							dinning, priceRng, hoursOfOp, ratings, menu));
 				}
 			}
 		} catch (IOException x) {
@@ -129,80 +132,76 @@ public class DatabaseReader {
 
 		return restaurants;
 	}
-	
-	public ArraySortedList<Restaurant> writeRestaurantDatabase(String url, ArraySortedList<Restaurant> r) {
+
+	public void writeRestaurantDatabase(String url, ArraySortedList<Restaurant> r) {
 		ArraySortedList<Restaurant> restaurants = r;
 		restaurants.reset();
 		Charset charset = Charset.forName("US-ASCII");
-		//Charset charset = Charset.forName("UTF-8");
+		// Charset charset = Charset.forName("UTF-8");
+		File restDB = new File(url);
+		
 		Path path = FileSystems.getDefault().getPath(url);
-		try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-			String line = null;
-			String name = null;
-			String des = null;
-			String icon = null;
-			String banner = null;
-			String address = null;
-			String pn = null;
-			String web = null;
-			String cuisine = null;
-			String dinning = null;
-			PriceRange priceRng = null;
-			HoursOfOperation hoursOfOp = null;
+		try (FileWriter writer = new FileWriter(restDB, false)) {
 			ArraySortedList<Rating> ratings = new ArraySortedList<Rating>();
 			ArraySortedList<FoodItem> menu = new ArraySortedList<FoodItem>();
 			Restaurant res = null;
-			for (int x = 0; x<restaurants.size(); x++) {
+			for (int x = 0; x < restaurants.size(); x++) {
 				res = restaurants.getNext();
 				ratings = res.getRatings();
 				menu = res.getMenu();
 				writer.write("---");
-					for (int i = 0; i < 8; i++) {
-						switch (i) {
-						case 0:
-							writer.write(res.getName());
-							break;
-						case 1:
-							writer.write(res.getDescription());
-							break;
-						case 2:
-							writer.write(res.getIconURL()+","+res.getBannerURL());
-							break;
-						case 3:
-							writer.write(res.getAddress());
-							break;
-						case 4:
-							writer.write(res.getPhoneNumber()+","+res.getWebsite()+","+res.getCuisineType()+","+res.getDinningType()+","+res.getPriceRange().getMin()+","+res.getPriceRange().getMax());
-							break;
-						case 5:
-							writer.write(res.getHoursOfOp().getMonday()+","+res.getHoursOfOp().getTuesday()+","+res.getHoursOfOp().getWednesday()+","+res.getHoursOfOp().getThursday()+","+res.getHoursOfOp().getFriday()+","+res.getHoursOfOp().getSaturday()+","+res.getHoursOfOp().getSunday());
-							break;
-						case 6:
-							String toPrint = "";
-							Rating curRat = null;
-							for (int y = 0; y < ratings.size(); y++) {
-								curRat = ratings.getNext();
-								toPrint+=curRat.getRating()+"-"+curRat.getDescription()+";";
-							}
-							writer.write(toPrint);
-							break;
-						case 7:
-							line = reader.readLine();
-							String[] split4 = line.split(";");
-							for (int x = 0; x < split4.length; x++) {
-								menu.add(
-										new FoodItem(split4[x].split(":")[1].split("-")[0], split4[x].split(":")[1].split("-")[1],Double.parseDouble(split4[x].split(":")[0])));
-							}
-							break;
+				for (int i = 0; i < 8; i++) {
+					switch (i) {
+					case 0:
+						writer.write(res.getName()+"\n");
+						break;
+					case 1:
+						writer.write(res.getDescription()+"\n");
+						break;
+					case 2:
+						writer.write(res.getIconURL() + "," + res.getBannerURL()+"\n");
+						break;
+					case 3:
+						writer.write(res.getAddress()+"\n");
+						break;
+					case 4:
+						writer.write(res.getPhoneNumber() + "," + res.getWebsite() + "," + res.getCuisineType() + ","
+								+ res.getDinningType() + "," + res.getPriceRange().getMin() + ","
+								+ res.getPriceRange().getMax()+"\n");
+						break;
+					case 5:
+						writer.write(res.getHoursOfOp().getMonday() + "," + res.getHoursOfOp().getTuesday() + ","
+								+ res.getHoursOfOp().getWednesday() + "," + res.getHoursOfOp().getThursday() + ","
+								+ res.getHoursOfOp().getFriday() + "," + res.getHoursOfOp().getSaturday() + ","
+								+ res.getHoursOfOp().getSunday()+"\n");
+						break;
+					case 6:
+						String toPrint = "";
+						Rating curRat = null;
+						for (int y = 0; y < ratings.size(); y++) {
+							curRat = ratings.getNext();
+							toPrint += curRat.getRating() + "-" + curRat.getDescription() + ";";
 						}
+						writer.write(toPrint+"\n");
+						break;
+					case 7:
+						String print = "";
+						FoodItem curItem = null;
+						menu.reset();
+						for (int z = 0; z < menu.size(); z++) {
+							curItem = menu.getNext();
+							print += curItem.getPrice() + ":" + curItem.getName() + "-" + curItem.getDescription()
+									+ ";";
+						}
+						writer.write(print+"\n");
+						break;
 					}
-					restaurants.add(new Restaurant(name, des, icon, banner, address, new PhoneNumber(pn), web, cuisine, dinning, priceRng, hoursOfOp, ratings, menu));
 				}
+				System.out.println("Closing stream.");
+				writer.close();
 			}
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
 		}
-
-		return restaurants;
 	}
 }
