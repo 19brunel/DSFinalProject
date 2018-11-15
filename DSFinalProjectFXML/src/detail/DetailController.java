@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -50,7 +52,7 @@ public class DetailController implements Initializable{
 	private ImageView banner;
 	private Text address;
 	private ListView<FoodItem> menuList;
-	private ListView<Rating> reviews;
+	private ListView<Rating> reviewList;
 	private DetailWrapper wrap;
 	private OrderController order;
 	private Text menuTitle;
@@ -85,11 +87,18 @@ public class DetailController implements Initializable{
     	sideBar.setStyle("-fx-background-color: #efefef;");
     	address = new Text(restaurant.getAddress());
     	reviewTitle = new Text("REVIEWS");
-    	addReview = new Button("ADD REVIEW");
+    	addReview = new Button("WRITE A REVIEW");
+    	addReview.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			AddReviewController adder = new AddReviewController(new DetailWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), wrap.getRestaurant(),wrap.getOrder()));
+    			adder.showStage();
+    		}
+    	});
     	//addReview.setOnAction();
     	reviewHeader = new HBox(reviewTitle, addReview);
     	menuList = new ListView<FoodItem>();
-    	reviews = new ListView<Rating>();
+    	reviewList = new ListView<Rating>();
     	switch(restaurant.getAvgRating()) {
         case 1:
         	rating.setImage(new Image("/starIcons/1star.png"));
@@ -115,7 +124,7 @@ public class DetailController implements Initializable{
     	imageContainer = new StackPane(banner, restaurantInfo);
     	imageContainer.setAlignment(Pos.BOTTOM_LEFT);
     	restaurantScroll = new ScrollPane();
-    	container = new VBox(imageContainer, menuTitle, menuList, reviewHeader, reviews);
+    	container = new VBox(imageContainer, menuTitle, menuList, reviewHeader, reviewList);
     	Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/detail/detail.fxml"));
@@ -141,7 +150,22 @@ public class DetailController implements Initializable{
                 return new MenuListCell(wrap);
             }
         });
-		//Make the review list
+		ObservableList<Rating> reviews = FXCollections.observableArrayList();
+		ArraySortedList<Rating> resRev = restaurant.getRatings();
+    	resRev.reset();
+    	Rating currentRev = null;
+    	for(int x =0; x<resRev.size();x++) {
+    		currentRev = resRev.getNext();
+    		//System.out.println(currentItem);
+    		reviews.add(currentRev);
+    	}
+    	reviewList.setItems(reviews);
+		reviewList.setCellFactory(new Callback<ListView<Rating>, ListCell<Rating>>() {
+            @Override
+            public ListCell<Rating> call(ListView<Rating> listView) {
+                return new ReviewListCell(wrap);
+            }
+        });
 		restaurantScroll.setContent(container);
 		sideBar.setContent(order.getContainer());
 	}
