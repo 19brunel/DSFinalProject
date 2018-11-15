@@ -139,9 +139,10 @@ public class DatabaseReader {
 		Charset charset = Charset.forName("US-ASCII");
 		// Charset charset = Charset.forName("UTF-8");
 		File restDB = new File(url);
-		
-		Path path = FileSystems.getDefault().getPath(url);
 		try (FileWriter writer = new FileWriter(restDB, false)) {
+			System.out.println("Writing to file.");
+			writer.write("Hello world.");
+			/*
 			ArraySortedList<Rating> ratings = new ArraySortedList<Rating>();
 			ArraySortedList<FoodItem> menu = new ArraySortedList<FoodItem>();
 			Restaurant res = null;
@@ -198,8 +199,9 @@ public class DatabaseReader {
 					}
 				}
 				System.out.println("Closing stream.");
+				*/
 				writer.close();
-			}
+			//}
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
 		}
