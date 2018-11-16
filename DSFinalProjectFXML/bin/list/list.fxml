@@ -78,7 +78,7 @@
               </items>
             </ChoiceBox>
             <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating" />
-            <HBox layoutX="14.0" layoutY="205.0" prefHeight="52.0" prefWidth="272.0">
+            <HBox fx:id="ratingButtons" layoutX="14.0" layoutY="205.0" prefHeight="52.0" prefWidth="272.0">
               <children>
                 <Button fx:id="subtract" onAction="#subtract" mnemonicParsing="false" text="-" />
                 <ImageView fx:id="rating" fitHeight="36.7822265625" fitWidth="49.04296875" pickOnBounds="true" preserveRatio="true" />

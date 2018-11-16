@@ -11,14 +11,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.control.cell.TextFieldListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -50,6 +54,8 @@ public class ListController implements Initializable {
 	private Button add;
 	@FXML
 	private TextField minPrice;
+	@FXML
+	private HBox ratingButtons;
 
 	public ListController(ListWrapper wrap) {
 		user = wrap.getUser();
@@ -112,7 +118,12 @@ public class ListController implements Initializable {
 				return new RestaurantListCell(wrap);
 			}
 		});
-		filterValue = 0;
+		filterValue = 1;
+		rating.setImage(new Image("/starIcons/1star.png"));
+		rating.setPreserveRatio(true);
+		rating.setFitWidth(200);
+		ratingButtons.setAlignment(Pos.CENTER);
+		ratingButtons.setSpacing(10);
 		
 	}
 
@@ -157,10 +168,50 @@ public class ListController implements Initializable {
 	@FXML
 	public void subtract(ActionEvent event) {
 		System.out.println("Minus.");
+		if(filterValue>1) {
+			filterValue--;
+		}
+		switch(filterValue) {
+        case 1:
+        	rating.setImage(new Image("/starIcons/1star.png"));
+        	break;
+        case 2:
+        	rating.setImage(new Image("/starIcons/2star.png"));
+        	break;
+        case 3:
+        	rating.setImage(new Image("/starIcons/3star.png"));
+        	break;
+        case 4:
+        	rating.setImage(new Image("/starIcons/4star.png"));
+        	break;
+        case 5:
+        	rating.setImage(new Image("/starIcons/5star.png"));
+        	break;
+        }
 	}
 
 	@FXML
 	public void add(ActionEvent event) {
 		System.out.println("Plus.");
+		if(filterValue<5) {
+			filterValue++;
+		}
+		switch(filterValue) {
+        case 1:
+        	rating.setImage(new Image("/starIcons/1star.png"));
+        	break;
+        case 2:
+        	rating.setImage(new Image("/starIcons/2star.png"));
+        	break;
+        case 3:
+        	rating.setImage(new Image("/starIcons/3star.png"));
+        	break;
+        case 4:
+        	rating.setImage(new Image("/starIcons/4star.png"));
+        	break;
+        case 5:
+        	rating.setImage(new Image("/starIcons/5star.png"));
+        	break;
+        }
 	}
 }
