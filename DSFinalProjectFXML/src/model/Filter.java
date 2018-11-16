@@ -1,21 +1,23 @@
 package model;
 
 public class Filter {
-	protected String dinningString;
+	protected String dinning;
+	protected String cuisine;
 	protected int rating;
 	protected double minPrice;
 	protected boolean useFilter;
-	public Filter(String s, int r, double m, boolean u) {
-		dinningString = s;
+	public Filter(String c, String s, int r, double m, boolean u) {
+		cuisine = c;
+		dinning = s;
 		rating = r;
 		minPrice = m;
 		useFilter = u;
 	}
-	public String getDinningString() {
-		return dinningString;
+	public String getDinning() {
+		return dinning;
 	}
-	public void setDinningString(String filterString) {
-		this.dinningString = filterString;
+	public void setDinning(String filterString) {
+		this.dinning = filterString;
 	}
 	public int getRating() {
 		return rating;
@@ -34,6 +36,12 @@ public class Filter {
 	}
 	public void setUseFilter(boolean useFilter) {
 		this.useFilter = useFilter;
+	}
+	public String getCuisine() {
+		return cuisine;
+	}
+	public void setCuisine(String cuisine) {
+		this.cuisine = cuisine;
 	}
 	
 }

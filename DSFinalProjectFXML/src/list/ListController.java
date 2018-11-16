@@ -85,8 +85,7 @@ public class ListController implements Initializable {
 		for (int x = 0; x < restaurantDB.size(); x++) {
 			curRest = restaurantDB.getNext();
 			if (filter.getUseFilter()) {
-				if (filter.getDinningString().equals("") || filter.getDinningString().equals("None") || filter
-						.getDinningString().equals(curRest.getCuisineType() + " " + curRest.getDinningType())) {
+				if (filter.getDinning().equals("") || filter.getDinning().equals("None") || (curRest.getCuisineType() + " " + curRest.getDinningType()).equals(filter.getCuisine()+" "+filter.getDinning())){
 				} else {
 					System.out.println("False because dinning.");
 					meetsFilter = false;
@@ -126,10 +125,13 @@ public class ListController implements Initializable {
 		rating.setFitWidth(200);
 		ratingButtons.setAlignment(Pos.CENTER);
 		ratingButtons.setSpacing(10);
-		if (!filter.getDinningString().equals(null) && !filter.getDinningString().equals("None")) {
-			cuisine.setValue(filter.getDinningString().split(" ")[0]);
-			dinning.setValue(filter.getDinningString().split(" ")[1] + " " + filter.getDinningString().split(" ")[2]);
+		if(!filter.getCuisine().equals(null)) {
+			cuisine.setValue(filter.getCuisine());
 		}
+		if(!filter.getDinning().equals(null)) {
+			dinning.setValue(filter.getDinning());
+		}
+		
 		filterValue = filter.getRating();
 		switch (filterValue) {
 		case 0:
@@ -168,11 +170,13 @@ public class ListController implements Initializable {
 	public void apply(ActionEvent event) {
 		System.out.println("Applying filters.");
 		boolean useFil = false;
-		String filterString = "";
+		String cuisineString = "";
+		String dinningString = "";
 		System.out.println(cuisine.getValue() + " " + dinning.getValue());
 		if (cuisine.getValue() != null && dinning.getValue() != null) {
 			if (!cuisine.getValue().equals("None") || !dinning.getValue().equals("None")) {
-				filterString = cuisine.getValue() + " " + dinning.getValue();
+				cuisineString = (String)cuisine.getValue();
+				dinningString = (String)dinning.getValue();
 				useFil = true;
 			}
 		}
@@ -186,9 +190,9 @@ public class ListController implements Initializable {
 				price = Double.parseDouble(minPrice.getText());
 			}
 		}
-		System.out.println(filterString + "-" + filterValue + "-" + price + "-" + useFil);
+		//System.out.println(filterString + "-" + filterValue + "-" + price + "-" + useFil);
 		ListController listController = new ListController(new ListWrapper(event, user, userDB, restaurantDB,
-				new Filter(filterString, filterValue, price, useFil)));
+				new Filter(cuisineString, dinningString, filterValue, price, useFil)));
 		listController.showStage();
 	}
 

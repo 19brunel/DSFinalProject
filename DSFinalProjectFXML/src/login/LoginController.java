@@ -65,7 +65,7 @@ public class LoginController implements Initializable{
 			}
 		}
 		if(attemptedUser.getPassword().equals(password.getText())&&attemptedUser!=null) {
-			ListController listController = new ListController(new ListWrapper(event, attemptedUser, userDB, restaurantDB, new Filter("None", 0, 0, false)));
+			ListController listController = new ListController(new ListWrapper(event, attemptedUser, userDB, restaurantDB, new Filter("None","None", 0, 0, false)));
 			listController.showStage();
 		}
 	}
