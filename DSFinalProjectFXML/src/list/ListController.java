@@ -127,9 +127,13 @@ public class ListController implements Initializable {
 		ratingButtons.setSpacing(10);
 		if(!filter.getCuisine().equals(null)) {
 			cuisine.setValue(filter.getCuisine());
+		}else {
+			cuisine.setValue("None");
 		}
 		if(!filter.getDinning().equals(null)) {
 			dinning.setValue(filter.getDinning());
+		}else {
+			dinning.setValue("None");
 		}
 		
 		filterValue = filter.getRating();
@@ -174,11 +178,11 @@ public class ListController implements Initializable {
 		String dinningString = "";
 		System.out.println(cuisine.getValue() + " " + dinning.getValue());
 		if (cuisine.getValue() != null && dinning.getValue() != null) {
-			if (!cuisine.getValue().equals("None") || !dinning.getValue().equals("None")) {
+			//if (!cuisine.getValue().equals("None") || !dinning.getValue().equals("None")) {
 				cuisineString = (String)cuisine.getValue();
 				dinningString = (String)dinning.getValue();
 				useFil = true;
-			}
+			//}
 		}
 		if (filterValue > 0) {
 			useFil = true;
