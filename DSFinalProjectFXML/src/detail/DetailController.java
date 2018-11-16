@@ -3,6 +3,7 @@ package detail;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import database.DatabaseReader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,7 +30,10 @@ import javafx.util.Callback;
 import list.ListController;
 import list.ListWrapper;
 import list.RestaurantListCell;
+import login.LoginController;
+import login.LoginWrapper;
 import model.Email;
+import model.Filter;
 import model.FoodItem;
 import model.PhoneNumber;
 import model.Rating;
@@ -61,6 +65,7 @@ public class DetailController implements Initializable{
 	private HBox reviewHeader;
 	@FXML private ScrollPane restaurantScroll;
 	@FXML private ScrollPane sideBar;
+	@FXML private Button find;
 	
 	public DetailController(DetailWrapper w) {
 		this.wrap = w;
@@ -174,6 +179,16 @@ public class DetailController implements Initializable{
 	}
 	public void showStage() {
 		thisStage.show();
+	}
+	@FXML
+	public void find(ActionEvent event) {
+		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None", 0, 0, false)));
+		list.showStage();
+	}
+	@FXML
+	public void logout(ActionEvent event) {
+		LoginController loginController = new LoginController(new LoginWrapper(wrap.getUserDB(),wrap.getRestaurantDB()));
+    	loginController.showStage();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

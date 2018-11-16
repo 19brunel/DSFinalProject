@@ -27,6 +27,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import login.LoginController;
+import login.LoginWrapper;
 import model.Filter;
 import model.Restaurant;
 import model.User;
@@ -164,7 +166,11 @@ public class ListController implements Initializable {
 				new Filter(filterString, filterValue, price, useFil)));
 		listController.showStage();
 	}
-
+	@FXML
+	public void logout(ActionEvent event) {
+		LoginController loginController = new LoginController(new LoginWrapper(userDB,restaurantDB));
+    	loginController.showStage();
+	}
 	@FXML
 	public void subtract(ActionEvent event) {
 		System.out.println("Minus.");
