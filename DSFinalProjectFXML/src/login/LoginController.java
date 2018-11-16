@@ -11,10 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import list.ListController;
 import list.ListWrapper;
 import model.Email;
+import model.Filter;
 import model.PhoneNumber;
 import model.Restaurant;
 import model.User;
@@ -26,11 +28,12 @@ public class LoginController implements Initializable{
 	protected ArraySortedList<Restaurant> restaurantDB;
 	@FXML private TextField username;
 	@FXML private PasswordField password;
+	@FXML private Text fail;
 	
 	public LoginController(LoginWrapper wrap) {
 		userDB = wrap.getUserDB();
 		restaurantDB = wrap.getRestaurantDB();
-		thisStage = new Stage();
+		thisStage = wrap.getStage();
 		Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/login/login.fxml"));
@@ -41,6 +44,7 @@ public class LoginController implements Initializable{
     	} catch (Exception e) {
     		System.out.println(e);
     	}
+    	fail.setVisible(false);
 	}
 	public void showStage() {
 		thisStage.show();
@@ -56,10 +60,12 @@ public class LoginController implements Initializable{
 			tempUser=userDB.getNext();
 			if(tempUser.getUsername().equals(username.getText())) {
 				attemptedUser = tempUser;
+			}else {
+				fail.setVisible(true);
 			}
 		}
-		if(attemptedUser.getPassword().equals(password.getText())) {
-			ListController listController = new ListController(new ListWrapper(event, attemptedUser, userDB, restaurantDB));
+		if(attemptedUser.getPassword().equals(password.getText())&&attemptedUser!=null) {
+			ListController listController = new ListController(new ListWrapper(event, attemptedUser, userDB, restaurantDB, new Filter("None","None", 0, 0, false)));
 			listController.showStage();
 		}
 	}

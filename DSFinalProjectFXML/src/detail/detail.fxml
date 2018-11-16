@@ -33,13 +33,13 @@
             </Text>
             <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
               <children>
-                <Button layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
+                <Button fx:id="find"  onAction="#find" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
                   <font>
                     <Font size="20.0" fx:id="x2" />
                   </font>
                 </Button>
                 <Button font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
-                <Button font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+                <Button fx:id="logout" onAction="#logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
               </children>
             </AnchorPane>
           </children>

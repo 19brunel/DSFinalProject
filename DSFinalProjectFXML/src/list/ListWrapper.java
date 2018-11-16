@@ -1,6 +1,7 @@
 package list;
 
 import javafx.event.ActionEvent;
+import model.Filter;
 import model.Restaurant;
 import model.User;
 import model.arraySortedList.ArraySortedList;
@@ -10,11 +11,13 @@ public class ListWrapper {
 	protected ArraySortedList<Restaurant> restaurantDB;
 	protected User user;
 	protected ActionEvent event;
-	public ListWrapper(ActionEvent e, User u, ArraySortedList<User> users, ArraySortedList<Restaurant> restaurants) {
+	protected Filter filter;
+	public ListWrapper(ActionEvent e, User u, ArraySortedList<User> users, ArraySortedList<Restaurant> restaurants, Filter f) {
 		userDB = users;
 		user = u;
 		event = e;
 		restaurantDB = restaurants;
+		filter = f;
 	}
 	public ArraySortedList<User> getUserDB() {
 		return userDB;
@@ -27,5 +30,11 @@ public class ListWrapper {
 	}
 	public User getUser() {
 		return user;
+	}
+	public Filter getFilter() {
+		return filter;
+	}
+	public void setFilter(Filter filter) {
+		this.filter = filter;
 	}
 }

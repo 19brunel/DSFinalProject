@@ -9,17 +9,6 @@ public class FoodItem implements Comparable{
 		price = p;
 		description = d;
 	}
-	public int compareTo(FoodItem other) {
-		if(other.getPrice()>price) {
-			return (int)(price-other.getPrice());
-		}else {
-			if(other.getPrice()==price) {
-				return 0;
-			}else {
-				return (int)(other.getPrice()-price);
-			}
-		}
-	}
 	public String toString() {
 		return (name + " $"+price);
 	}
@@ -43,7 +32,7 @@ public class FoodItem implements Comparable{
 	}
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+		FoodItem item = (FoodItem)o;
+		return (int)(this.price*100)-(int)(item.getPrice()*100);
 	}
 }

@@ -35,7 +35,7 @@ public class ReviewListCell extends ListCell<Rating>{
 		ratImage = new ImageView();
 		ratImage.setPreserveRatio(true);
 		ratImage.setFitWidth(100);
-		rate = new HBox(ratImage, rateNum);
+		rate = new HBox( rateNum, ratImage);
 		container = new VBox(rate, description);
 		container.setMinHeight(40);
 		rating = null;
@@ -48,6 +48,9 @@ public class ReviewListCell extends ListCell<Rating>{
             rateNum.setText(" "+item.getRating());
             rating = item;
             switch(item.getRating()) {
+            case 0:
+    			ratImage.setImage(new Image("/starIcons/0star.png"));
+    			break;
             case 1:
             	ratImage.setImage(new Image("/starIcons/1star.png"));
             	break;

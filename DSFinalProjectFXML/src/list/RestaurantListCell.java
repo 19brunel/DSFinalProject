@@ -30,6 +30,7 @@ public class RestaurantListCell extends ListCell<Restaurant>{
     private VBox vBox;
     private Text dinning;
     private Text address;
+    private Text ratingNum;
     private ImageView rating;
     private HBox ratingHbox;
     private Button button;
@@ -48,13 +49,14 @@ public class RestaurantListCell extends ListCell<Restaurant>{
         description.setWrappingWidth(500);
         dinning = new Text();
         address = new Text();
+        ratingNum = new Text();
         rating = new ImageView();
         rating.setFitWidth(50);
         rating.setPreserveRatio(true);
         rating.setTranslateY(4);
-        ratingHbox = new HBox(rating, dinning);
+        ratingHbox = new HBox(ratingNum, rating, dinning);
         ratingHbox.setSpacing(10);
-        vBox = new VBox(name, description, price, ratingHbox, address);
+        vBox = new VBox(name, ratingHbox, description, price, address);
         icon = new ImageView();
         icon.setFitWidth(100);
         icon.setPreserveRatio(true);
@@ -83,10 +85,14 @@ public class RestaurantListCell extends ListCell<Restaurant>{
             dinning.setText(item.getCuisineType()+" "+item.getDinningType());
             description.setText(item.getDescription());
             address.setText(item.getAddress());
+            ratingNum.setText(item.getAvgRating()+" ");
             icon.setImage(new Image(item.getIconURL()));
             button.setText("VIEW");
             restaurant = item;
-            switch(item.getAvgRating()) {
+            switch((int)item.getAvgRating()) {
+            case 0:
+    			rating.setImage(new Image("/starIcons/0star.png"));
+    			break;
             case 1:
             	rating.setImage(new Image("/starIcons/1star.png"));
             	break;
