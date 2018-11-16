@@ -5,4 +5,7 @@ public class PhoneNumber {
 	public PhoneNumber(String n) {
 		number = Double.parseDouble(n);
 	}
+	public String getPhoneNumber() {
+		return ""+number;
+	}
 }
