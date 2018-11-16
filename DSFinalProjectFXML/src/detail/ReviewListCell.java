@@ -48,6 +48,9 @@ public class ReviewListCell extends ListCell<Rating>{
             rateNum.setText(" "+item.getRating());
             rating = item;
             switch(item.getRating()) {
+            case 0:
+    			ratImage.setImage(new Image("/starIcons/0star.png"));
+    			break;
             case 1:
             	ratImage.setImage(new Image("/starIcons/1star.png"));
             	break;

@@ -118,8 +118,8 @@ public class ListController implements Initializable {
 				return new RestaurantListCell(wrap);
 			}
 		});
-		filterValue = 1;
-		rating.setImage(new Image("/starIcons/1star.png"));
+		filterValue = 0;
+		rating.setImage(new Image("/starIcons/0star.png"));
 		rating.setPreserveRatio(true);
 		rating.setFitWidth(200);
 		ratingButtons.setAlignment(Pos.CENTER);
@@ -168,10 +168,13 @@ public class ListController implements Initializable {
 	@FXML
 	public void subtract(ActionEvent event) {
 		System.out.println("Minus.");
-		if(filterValue>1) {
+		if(filterValue>0) {
 			filterValue--;
 		}
 		switch(filterValue) {
+		case 0:
+			rating.setImage(new Image("/starIcons/0star.png"));
+			break;
         case 1:
         	rating.setImage(new Image("/starIcons/1star.png"));
         	break;
@@ -197,6 +200,9 @@ public class ListController implements Initializable {
 			filterValue++;
 		}
 		switch(filterValue) {
+		case 0:
+			rating.setImage(new Image("/starIcons/0star.png"));
+			break;
         case 1:
         	rating.setImage(new Image("/starIcons/1star.png"));
         	break;

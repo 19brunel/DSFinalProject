@@ -90,6 +90,9 @@ public class RestaurantListCell extends ListCell<Restaurant>{
             button.setText("VIEW");
             restaurant = item;
             switch((int)item.getAvgRating()) {
+            case 0:
+    			rating.setImage(new Image("/starIcons/0star.png"));
+    			break;
             case 1:
             	rating.setImage(new Image("/starIcons/1star.png"));
             	break;
