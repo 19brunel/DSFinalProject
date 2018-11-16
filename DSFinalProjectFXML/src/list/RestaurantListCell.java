@@ -56,7 +56,7 @@ public class RestaurantListCell extends ListCell<Restaurant>{
         rating.setTranslateY(4);
         ratingHbox = new HBox(ratingNum, rating, dinning);
         ratingHbox.setSpacing(10);
-        vBox = new VBox(name, description, price, ratingHbox, address);
+        vBox = new VBox(name, ratingHbox, description, price, address);
         icon = new ImageView();
         icon.setFitWidth(100);
         icon.setPreserveRatio(true);

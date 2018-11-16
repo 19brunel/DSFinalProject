@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -15,7 +16,11 @@
       <children>
         <AnchorPane layoutX="0.0" layoutY="0.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="1152.0">
           <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e31c60" height="100.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1152.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1152.0">
+              <fill>
+                <Color blue="0.376" green="0.110" red="0.890" fx:id="x6" />
+              </fill>
+            </Rectangle>
             <Text fill="WHITE" layoutX="107.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANT">
               <font>
                 <Font size="30.0" fx:id="x1" />
@@ -47,6 +52,43 @@
         <AnchorPane layoutX="0.0" layoutY="100.0" maxWidth="300.0" minWidth="300.0" prefHeight="548.0" prefWidth="300.0">
           <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#efefef" height="548.0000999999975" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
+            <Text fill="$x3" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I want">
+              <font>
+                <Font name="Century Gothic" size="30.0" fx:id="x5" />
+              </font>
+            </Text>
+            <ChoiceBox fx:id="cuisine" layoutX="14.0" layoutY="51.0" prefHeight="39.90234375" prefWidth="272.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="None" />
+                  <String fx:value="Italian" />
+                  <String fx:value="Chinese" />
+                  <String fx:value="Mexican" />
+                </FXCollections>
+              </items>
+            </ChoiceBox>
+            <ChoiceBox fx:id="dinning" layoutX="14.0" layoutY="99.0" prefHeight="39.90234375" prefWidth="272.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="None" />
+                  <String fx:value="Fine Dinning" />
+                  <String fx:value="Fast Food" />
+                  <String fx:value="Casual Dinning" />
+                </FXCollections>
+              </items>
+            </ChoiceBox>
+            <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating" />
+            <HBox layoutX="14.0" layoutY="205.0" prefHeight="52.0" prefWidth="272.0">
+              <children>
+                <Button fx:id="subtract" onAction="#subtract" mnemonicParsing="false" text="-" />
+                <ImageView fx:id="rating" fitHeight="36.7822265625" fitWidth="49.04296875" pickOnBounds="true" preserveRatio="true" />
+                <Button fx:id="add" onAction="#add" mnemonicParsing="false" text="+" />
+              </children>
+            </HBox>
+            <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum Price" />
+            <Label font="$x5" layoutX="14.0" layoutY="288.0" text="\$" textFill="$x6" />
+            <TextField fx:id="minPrice" layoutX="36.0" layoutY="292.0" prefHeight="30.000099999997474" prefWidth="104.0" promptText="Enter min price" style="-fx-font-size: 20;&#10;-fx-fill: rgb(227,28,96);&#10;&#10;" text="0" />
+            <Button fx:id="apply" onAction="#apply" font="$x5" layoutX="28.0" layoutY="462.0" mnemonicParsing="false" text="APPLY FILTERS" />
           </children>
         </AnchorPane>
         <AnchorPane layoutX="300.0" layoutY="100.0" prefHeight="549.0" prefWidth="852.0">

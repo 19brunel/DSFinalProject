@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import list.ListController;
 import list.ListWrapper;
 import model.Email;
+import model.Filter;
 import model.PhoneNumber;
 import model.Restaurant;
 import model.User;
@@ -59,7 +60,7 @@ public class LoginController implements Initializable{
 			}
 		}
 		if(attemptedUser.getPassword().equals(password.getText())) {
-			ListController listController = new ListController(new ListWrapper(event, attemptedUser, userDB, restaurantDB));
+			ListController listController = new ListController(new ListWrapper(event, attemptedUser, userDB, restaurantDB, new Filter("None", 0, 0, false)));
 			listController.showStage();
 		}
 	}
