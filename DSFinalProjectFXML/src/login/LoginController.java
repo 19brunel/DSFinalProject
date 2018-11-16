@@ -33,7 +33,7 @@ public class LoginController implements Initializable{
 	public LoginController(LoginWrapper wrap) {
 		userDB = wrap.getUserDB();
 		restaurantDB = wrap.getRestaurantDB();
-		thisStage = new Stage();
+		thisStage = wrap.getStage();
 		Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/login/login.fxml"));

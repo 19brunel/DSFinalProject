@@ -25,7 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception { //C:\Users\Margaret\Desktop\Data Structures\DSFinalGit\DSFinalProject\DSFinalProjectFXML\src\database
-    	LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")),new DatabaseReader().readRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src"))));
+    	LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")),new DatabaseReader().readRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")), new Stage()));
     	loginController.showStage();
     }
 }

@@ -187,7 +187,7 @@ public class DetailController implements Initializable{
 	}
 	@FXML
 	public void logout(ActionEvent event) {
-		LoginController loginController = new LoginController(new LoginWrapper(wrap.getUserDB(),wrap.getRestaurantDB()));
+		LoginController loginController = new LoginController(new LoginWrapper(wrap.getUserDB(),wrap.getRestaurantDB(), thisStage));
     	loginController.showStage();
 	}
 	@Override

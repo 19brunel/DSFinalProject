@@ -85,25 +85,25 @@ public class ListController implements Initializable {
 		for (int x = 0; x < restaurantDB.size(); x++) {
 			curRest = restaurantDB.getNext();
 			if (filter.getUseFilter()) {
-				if (filter.getDinningString().equals("")||filter.getDinningString().equals("None") || filter.getDinningString()
-						.equals(curRest.getCuisineType() + " " + curRest.getDinningType())) {
-				}else {
+				if (filter.getDinningString().equals("") || filter.getDinningString().equals("None") || filter
+						.getDinningString().equals(curRest.getCuisineType() + " " + curRest.getDinningType())) {
+				} else {
 					System.out.println("False because dinning.");
 					meetsFilter = false;
 				}
 				if (filter.getRating() > 0 && filter.getRating() < 6) {
 					if (filter.getRating() >= curRest.getAvgRating()) {
-					}else {
-						System.out.println("False because rating.");
 						meetsFilter = false;
+					} else {
+						System.out.println("False because rating.");
 					}
 				}
 				if (filter.getMinPrice() > 0) {
 					if (filter.getMinPrice() >= curRest.getPriceRange().getMin()) {
 						System.out.println("False because min price.");
 						meetsFilter = false;
-					}else {
-						
+					} else {
+
 					}
 				}
 			} else {
@@ -126,7 +126,32 @@ public class ListController implements Initializable {
 		rating.setFitWidth(200);
 		ratingButtons.setAlignment(Pos.CENTER);
 		ratingButtons.setSpacing(10);
-		
+		if (!filter.getDinningString().equals(null) && !filter.getDinningString().equals("None")) {
+			cuisine.setValue(filter.getDinningString().split(" ")[0]);
+			dinning.setValue(filter.getDinningString().split(" ")[1] + " " + filter.getDinningString().split(" ")[2]);
+		}
+		filterValue = filter.getRating();
+		switch (filterValue) {
+		case 0:
+			rating.setImage(new Image("/starIcons/0star.png"));
+			break;
+		case 1:
+			rating.setImage(new Image("/starIcons/1star.png"));
+			break;
+		case 2:
+			rating.setImage(new Image("/starIcons/2star.png"));
+			break;
+		case 3:
+			rating.setImage(new Image("/starIcons/3star.png"));
+			break;
+		case 4:
+			rating.setImage(new Image("/starIcons/4star.png"));
+			break;
+		case 5:
+			rating.setImage(new Image("/starIcons/5star.png"));
+			break;
+		}
+		minPrice.setText("" + filter.getMinPrice());
 	}
 
 	public void showStage() {
@@ -144,7 +169,7 @@ public class ListController implements Initializable {
 		System.out.println("Applying filters.");
 		boolean useFil = false;
 		String filterString = "";
-		System.out.println(cuisine.getValue()+" "+dinning.getValue());
+		System.out.println(cuisine.getValue() + " " + dinning.getValue());
 		if (cuisine.getValue() != null && dinning.getValue() != null) {
 			if (!cuisine.getValue().equals("None") || !dinning.getValue().equals("None")) {
 				filterString = cuisine.getValue() + " " + dinning.getValue();
@@ -161,69 +186,71 @@ public class ListController implements Initializable {
 				price = Double.parseDouble(minPrice.getText());
 			}
 		}
-		System.out.println(filterString+"-"+filterValue+"-"+price+"-"+useFil);
+		System.out.println(filterString + "-" + filterValue + "-" + price + "-" + useFil);
 		ListController listController = new ListController(new ListWrapper(event, user, userDB, restaurantDB,
 				new Filter(filterString, filterValue, price, useFil)));
 		listController.showStage();
 	}
+
 	@FXML
 	public void logout(ActionEvent event) {
-		LoginController loginController = new LoginController(new LoginWrapper(userDB,restaurantDB));
-    	loginController.showStage();
+		LoginController loginController = new LoginController(new LoginWrapper(userDB, restaurantDB, thisStage));
+		loginController.showStage();
 	}
+
 	@FXML
 	public void subtract(ActionEvent event) {
 		System.out.println("Minus.");
-		if(filterValue>0) {
+		if (filterValue > 0) {
 			filterValue--;
 		}
-		switch(filterValue) {
+		switch (filterValue) {
 		case 0:
 			rating.setImage(new Image("/starIcons/0star.png"));
 			break;
-        case 1:
-        	rating.setImage(new Image("/starIcons/1star.png"));
-        	break;
-        case 2:
-        	rating.setImage(new Image("/starIcons/2star.png"));
-        	break;
-        case 3:
-        	rating.setImage(new Image("/starIcons/3star.png"));
-        	break;
-        case 4:
-        	rating.setImage(new Image("/starIcons/4star.png"));
-        	break;
-        case 5:
-        	rating.setImage(new Image("/starIcons/5star.png"));
-        	break;
-        }
+		case 1:
+			rating.setImage(new Image("/starIcons/1star.png"));
+			break;
+		case 2:
+			rating.setImage(new Image("/starIcons/2star.png"));
+			break;
+		case 3:
+			rating.setImage(new Image("/starIcons/3star.png"));
+			break;
+		case 4:
+			rating.setImage(new Image("/starIcons/4star.png"));
+			break;
+		case 5:
+			rating.setImage(new Image("/starIcons/5star.png"));
+			break;
+		}
 	}
 
 	@FXML
 	public void add(ActionEvent event) {
 		System.out.println("Plus.");
-		if(filterValue<5) {
+		if (filterValue < 5) {
 			filterValue++;
 		}
-		switch(filterValue) {
+		switch (filterValue) {
 		case 0:
 			rating.setImage(new Image("/starIcons/0star.png"));
 			break;
-        case 1:
-        	rating.setImage(new Image("/starIcons/1star.png"));
-        	break;
-        case 2:
-        	rating.setImage(new Image("/starIcons/2star.png"));
-        	break;
-        case 3:
-        	rating.setImage(new Image("/starIcons/3star.png"));
-        	break;
-        case 4:
-        	rating.setImage(new Image("/starIcons/4star.png"));
-        	break;
-        case 5:
-        	rating.setImage(new Image("/starIcons/5star.png"));
-        	break;
-        }
+		case 1:
+			rating.setImage(new Image("/starIcons/1star.png"));
+			break;
+		case 2:
+			rating.setImage(new Image("/starIcons/2star.png"));
+			break;
+		case 3:
+			rating.setImage(new Image("/starIcons/3star.png"));
+			break;
+		case 4:
+			rating.setImage(new Image("/starIcons/4star.png"));
+			break;
+		case 5:
+			rating.setImage(new Image("/starIcons/5star.png"));
+			break;
+		}
 	}
 }
