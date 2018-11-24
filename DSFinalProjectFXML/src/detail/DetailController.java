@@ -3,6 +3,7 @@ package detail;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import account.AccountController;
 import database.DatabaseReader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -189,6 +190,11 @@ public class DetailController implements Initializable{
 	public void logout(ActionEvent event) {
 		LoginController loginController = new LoginController(new LoginWrapper(wrap.getUserDB(),wrap.getRestaurantDB(), thisStage));
     	loginController.showStage();
+	}
+	@FXML
+	public void account(ActionEvent event) {
+		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		accountCont.showStage();
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

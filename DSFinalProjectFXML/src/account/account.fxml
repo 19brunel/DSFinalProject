@@ -33,25 +33,20 @@
             </Text>
             <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
               <children>
-                <Button fx:id="find"  onAction="#find" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
+                <Button fx:id="find" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" onAction="#find" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
                   <font>
                     <Font size="20.0" fx:id="x2" />
                   </font>
                 </Button>
-                <Button fx:id="account" onAction="#account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
-                <Button fx:id="logout" onAction="#logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+                <Button font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
+                <Button fx:id="logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
               </children>
             </AnchorPane>
           </children>
         </AnchorPane>
-        <AnchorPane layoutX="0.0" layoutY="100.0" prefHeight="548.0" prefWidth="1152.0">
+        <AnchorPane fx:id="bottomPane" layoutX="0.0" layoutY="100.0" prefHeight="548.0" prefWidth="1152.0">
           <children>
-            <ScrollPane fx:id="restaurantScroll" content="$null" hbarPolicy="NEVER" layoutX="0.0" layoutY="0.0" prefHeight="548.0" prefWidth="886.0" vbarPolicy="AS_NEEDED" />
-            <AnchorPane fx:id="sideBarContainer" layoutX="886.0" layoutY="1.0" minWidth="243.0" prefHeight="547.0" prefWidth="266.0">
-              <children>
-                <ScrollPane fx:id="sideBar" content="$null" hbarPolicy="NEVER" layoutX="0.0" layoutY="0.0" prefHeight="547.0" prefWidth="266.0" />
-              </children>
-            </AnchorPane>
+            <VBox fx:id="userVbox" layoutX="0.0" layoutY="0.0" prefHeight="548.0" prefWidth="1152.0" />
           </children>
         </AnchorPane>
       </children>
