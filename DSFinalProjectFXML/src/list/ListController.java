@@ -3,6 +3,7 @@ package list;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import account.AccountController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -41,6 +42,7 @@ public class ListController implements Initializable {
 	protected ArraySortedList<User> userDB;
 	protected ArraySortedList<Restaurant> restaurantDB;
 	protected Filter filter;
+	protected ListWrapper wrap;
 	protected int filterValue;
 	@FXML
 	private ListView restaurantList;
@@ -60,6 +62,7 @@ public class ListController implements Initializable {
 	private HBox ratingButtons;
 
 	public ListController(ListWrapper wrap) {
+		this.wrap = wrap;
 		user = wrap.getUser();
 		event = wrap.getEvent();
 		userDB = wrap.getUserDB();
@@ -169,7 +172,11 @@ public class ListController implements Initializable {
 		// TODO Auto-generated method stub
 
 	}
-
+	@FXML
+	public void account(ActionEvent event) {
+		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		accountCont.showStage();
+	}
 	@FXML
 	public void apply(ActionEvent event) {
 		System.out.println("Applying filters.");

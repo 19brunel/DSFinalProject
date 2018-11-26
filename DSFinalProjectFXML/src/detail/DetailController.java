@@ -78,8 +78,9 @@ public class DetailController implements Initializable{
 		thisStage = (Stage)((Node)wrap.getEvent().getSource()).getScene().getWindow();
     	dinning = new Text(restaurant.getCuisineType()+" "+restaurant.getDinningType());
     	banner = new ImageView(new Image(restaurant.getBannerURL()));
-    	banner.setFitWidth(900);
-    	banner.setFitHeight(200);
+    	banner.setClip(banner.getParent());
+    	//banner.setFitWidth(900);
+    	//banner.setFitHeight(200);
     	BoxBlur boxBlur = new BoxBlur();
     	boxBlur.setWidth(10);
     	boxBlur.setHeight(3);
