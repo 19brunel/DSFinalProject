@@ -9,10 +9,8 @@ public class PhoneNumber {
 		return ""+number;
 	}
 	public String print() {
-		String output = "";
-		output+= "("+(int)(number/10000000)+")-";
-		output+= (int)((number/10000)-((int)(number/10000000))*1000)+"-";
-		output+= (int)((number)-((number/10000)-((int)(number/10000000))*1000)*10000)+"";
+		String output = Math.round(number)+"";
+		output = "("+output.substring(0, 3)+")-"+output.substring(3,6)+"-"+output.substring(6,10);
 		return output;
 	}
 }
