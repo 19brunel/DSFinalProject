@@ -1,7 +1,9 @@
 package account;
 
+import detail.AddReviewController;
 import detail.DetailWrapper;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -9,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -34,6 +37,7 @@ public class AccountController {
 	private boolean isAdmin;
 	private VBox container;
 	private ListWrapper wrap;
+	private Button edit;
 	
 	@FXML private AnchorPane bottomPane;
 	@FXML private ScrollPane scroll;
@@ -62,7 +66,15 @@ public class AccountController {
 		HBox phNumber = new HBox(new Text("PHONE NUMBER: "), phoneNumber);
 		phNumber.setPadding(new Insets(10));
 		phNumber.setAlignment(Pos.CENTER);
-		container = new VBox(name, login, eMail, phNumber);
+		edit = new Button("EDIT");
+		edit.setOnAction(new EventHandler<ActionEvent>() {
+    		@Override
+    		public void handle(ActionEvent event) {
+    			AddReviewController adder = new AddReviewController(new DetailWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), wrap.getRestaurant(),wrap.getOrder()));
+    			adder.showStage();
+    		}
+    	});
+		container = new VBox(name, login, eMail, phNumber, edit);
 		container.setAlignment(Pos.CENTER);
 		container.setPadding(new Insets(10));
 		container.setSpacing(10);
