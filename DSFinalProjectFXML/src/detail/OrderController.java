@@ -2,6 +2,7 @@ package detail;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -25,6 +26,7 @@ public class OrderController {
 		title = new Text("MY ORDER:");
 		orderList = new ListView<FoodItem>();
 		orderList.setStyle("-fx-background-color: #efefef;");
+		orderList.setPadding(new Insets(10));
 		this.wrap = wrap;
 		total = new Text("TOTAL: $"+this.getOrderTotal());
 		container = new VBox(title, orderList, total);

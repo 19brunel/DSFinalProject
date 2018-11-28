@@ -29,9 +29,18 @@ public class OrderListCell extends ListCell<FoodItem>{
 		this.wrap = w;
 		restaurant = wrap.getRestaurant();
 		itemName = new Text();
+		itemName.setWrappingWidth(80);
+		itemName.minWidth(80);
 		price = new Text();
+		price.prefWidth(50);
+		price.setWrappingWidth(50);
+		price.minWidth(50);
 		button = new Button();
 		namePrice = new HBox(price, itemName, button);
+		namePrice.prefHeight(100);
+		namePrice.minHeight(100);
+		namePrice.setMinHeight(100);
+		namePrice.setAlignment(Pos.CENTER_LEFT);
 		menuItem = null;
 		order = wrap.getOrder();
 		button.setOnAction(new EventHandler<ActionEvent>() {

@@ -25,7 +25,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import list.ListController;
@@ -78,25 +80,28 @@ public class DetailController implements Initializable{
 		thisStage = (Stage)((Node)wrap.getEvent().getSource()).getScene().getWindow();
     	dinning = new Text(restaurant.getCuisineType()+" "+restaurant.getDinningType());
     	banner = new ImageView(new Image(restaurant.getBannerURL()));
-    	banner.minWidth(900);
     	banner.setFitWidth(900);
-    	banner.prefWidth(900);
-    	banner.maxWidth(900);
-    	banner.maxHeight(200);
-    	banner.setPreserveRatio(true);
+    	banner.boundsInParentProperty();
+    	banner.setClip(new Rectangle(900,200));
+    	banner.setPreserveRatio(false);
+    	banner.setFitHeight(200);
     	BoxBlur boxBlur = new BoxBlur();
     	boxBlur.setWidth(10);
     	boxBlur.setHeight(3);
     	boxBlur.setIterations(3);
     	banner.setEffect(boxBlur);
     	rating = new ImageView();
-    	rating.setFitWidth(50);
+    	rating.setFitHeight(25);
     	rating.setPreserveRatio(true);
     	menuTitle = new Text("MENU");
+    	menuTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
+    	menuTitle.setTextAlignment(TextAlignment.CENTER);
     	sideBar = new ScrollPane();
-    	sideBar.setStyle("-fx-background-color: #efefef;");
+    	sideBar.setStyle("-fx-background-color: #efefef; ");
     	address = new Text(restaurant.getAddress());
     	reviewTitle = new Text("REVIEWS");
+    	reviewTitle.setTextAlignment(TextAlignment.CENTER);
+    	reviewTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
     	addReview = new Button("WRITE A REVIEW");
     	addReview.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
@@ -131,10 +136,13 @@ public class DetailController implements Initializable{
         }
     	restaurantName = new Text(restaurant.getName());
     	ratDin = new HBox(rating, dinning);
-    	ratDin.setAlignment(Pos.CENTER_LEFT);
+    	ratDin.setAlignment(Pos.CENTER);
     	restaurantInfo = new VBox(restaurantName, ratDin, address);
-    	restaurantInfo.setAlignment(Pos.BOTTOM_LEFT);
-    	restaurantInfo.setStyle("-fx-fill: WHITE;");
+    	restaurantInfo.setAlignment(Pos.CENTER);
+    	restaurantInfo.setStyle("-fx-fill: #ffffff;");
+    	restaurantName.setStyle("-fx-fill: #ffffff; -fx-font-size: 50; -fx-stroke: #000000; -fx-stroke-width: 1; -fx-font-weight:bold;");
+    	dinning.setStyle("-fx-fill: #ffffff; -fx-font-size: 25; -fx-stroke: #000000; -fx-stroke-width: 0.5; -fx-font-weight:bold;");
+    	address.setStyle("-fx-fill: #ffffff; -fx-font-size: 25; -fx-stroke: #000000; -fx-stroke-width: 0.5; -fx-font-weight:bold;");
     	imageContainer = new StackPane(banner, restaurantInfo);
     	imageContainer.setAlignment(Pos.BOTTOM_LEFT);
     	restaurantScroll = new ScrollPane();
@@ -158,6 +166,7 @@ public class DetailController implements Initializable{
     		menu.add(currentItem);
     	}
     	menuList.setItems(menu);
+    	menuList.setPrefHeight(menu.size() * 50);
 		menuList.setCellFactory(new Callback<ListView<FoodItem>, ListCell<FoodItem>>() {
             @Override
             public ListCell<FoodItem> call(ListView<FoodItem> listView) {
@@ -174,6 +183,7 @@ public class DetailController implements Initializable{
     		reviews.add(currentRev);
     	}
     	reviewList.setItems(reviews);
+    	reviewList.setPrefHeight(reviews.size()*40);
 		reviewList.setCellFactory(new Callback<ListView<Rating>, ListCell<Rating>>() {
             @Override
             public ListCell<Rating> call(ListView<Rating> listView) {
