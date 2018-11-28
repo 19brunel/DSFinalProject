@@ -33,9 +33,9 @@ public class DatabaseReader {
 		Charset charset = Charset.forName("US-ASCII");
 		// Charset charset = Charset.forName("UTF-8");
 		Path path = FileSystems.getDefault().getPath(url);
-		System.out.println("Found path.");
+		//System.out.println("Found path.");
 		try (BufferedReader reader = Files.newBufferedReader(path, charset)) {
-			System.out.println("Created buffer reader.");
+			//System.out.println("Created buffer reader.");
 			String line = null;
 			while ((line = reader.readLine()) != null) {
 				parameters = line.split(",");
@@ -207,7 +207,7 @@ public class DatabaseReader {
 					}
 				}
 			}
-			System.out.println("Closing stream.");
+			//System.out.println("Closing stream.");
 			writer.close();
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);
@@ -221,15 +221,15 @@ public class DatabaseReader {
 		File restDB = new File(url);
 		try{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(restDB, false));
-			System.out.println("Writing to file: "+url);
+			//System.out.println("Writing to file: "+url);
 			User user = null;
 			for (int x = 0; x < users.size(); x++) {
 				user = users.getNext();
-				System.out.println("Writing "+user.getName());
+				//System.out.println("Writing "+user.getName());
 				writer.write(user.getUsername()+","+user.getPassword()+","+user.getName()+","+user.getEmail().getEmail()+","+user.getPhoneNumber().getPhoneNumber()+","+user.isAdmin());
 				writer.newLine();
 			}
-			System.out.println("Closing stream.");
+			//System.out.println("Closing stream.");
 			writer.close();
 		} catch (IOException x) {
 			System.err.format("IOException: %s%n", x);

@@ -1,5 +1,8 @@
 /account/
+/application/
+/database/
 /detail/
 /list/
-/database/
+/login/
+/starIcons/
 /model/

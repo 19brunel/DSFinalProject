@@ -51,8 +51,8 @@ public class LoginController implements Initializable{
 	}
 	@FXML
 	private void attemptLogin(ActionEvent event) {
-		System.out.println("Login: Username - "+username.getText());
-		System.out.println("Login: Password - "+password.getText());
+		//System.out.println("Login: Username - "+username.getText());
+		//System.out.println("Login: Password - "+password.getText());
 		userDB.reset();
 		User tempUser = null;
 		User attemptedUser = null;
