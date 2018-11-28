@@ -1,7 +1,7 @@
 package model;
 
 public class User implements Comparable{
-	protected static int id = 0;
+	private static int id = 0;
 	protected String username;
 	protected String name;
 	protected String password;
@@ -16,9 +16,6 @@ public class User implements Comparable{
 		email = e;
 		phoneNumber = pn;
 		isAdmin = ad;
-	}
-	public int compareTo(User user) {
-		return this.id-user.getId();
 	}
 	public String getUsername() {
 		return username;
@@ -60,7 +57,7 @@ public class User implements Comparable{
 		this.phoneNumber = phoneNumber;
 	}
 	@Override
-	public int compareTo(Object arg0) {
-		return 0;
+	public int compareTo(Object user) {
+		return this.id-((User)user).getId();
 	}
 }

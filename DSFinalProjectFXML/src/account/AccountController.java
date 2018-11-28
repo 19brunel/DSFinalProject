@@ -70,7 +70,8 @@ public class AccountController {
 		edit.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
-    			
+    			EditAccountController editCont = new EditAccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+    			editCont.showStage();
     		}
     	});
 		container = new VBox(name, login, eMail, phNumber, edit);

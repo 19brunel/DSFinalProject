@@ -65,11 +65,22 @@ public class EditAccountController {
 		User newUser = wrap.getUser();
 		ArraySortedList<User> newDB = wrap.getUserDB();
 		newDB.remove(newUser);
-		PhoneNumber num = new PhoneNumber(phoneNumber.getText().replaceAll("(", "").replaceAll(")","").replaceAll("-", ""));
+		String numS = phoneNumber.getText();
+		if(numS.contains("(")||numS.contains("")) {
+			System.out.println(numS);
+			numS = numS.substring(1);
+			System.out.println(numS);
+			numS = numS.substring(0, 3)+numS.substring(4);
+			if(numS.contains("-")) {
+				numS = numS.replaceAll("-","");
+			}
+		}
+		System.out.println(numS);
+		PhoneNumber num = new PhoneNumber(numS);
 		newUser= new User(username.getText(),password.getText(),name.getText(),new Email(email.getText()),num, user.isAdmin());
 		newDB.add(newUser);
 		DatabaseReader writer = new DatabaseReader();
-		//writer.writeUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src"), newDB);
+		writer.writeUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src"), newDB);
 		//Call add review in the database writer class passing the restaurant, rating, description
 		
 		AccountController refreshedDetail = new AccountController(new ListWrapper(wrap.getEvent(), newUser, newDB, wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));

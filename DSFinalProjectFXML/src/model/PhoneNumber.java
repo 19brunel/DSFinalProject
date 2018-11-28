@@ -6,7 +6,7 @@ public class PhoneNumber {
 		number = Double.parseDouble(n);
 	}
 	public String getPhoneNumber() {
-		return ""+number;
+		return String.format("%.12f", number).substring(0,10);
 	}
 	public String print() {
 		String output = Math.round(number)+"";
