@@ -1,3 +1,4 @@
-a,p,Admin,admin@restaurantadvisor.java,2621234567,true
-leob,leosPass,Leo Brunette,leorbrunette@gmail.com,2629554821,false
+hannah.keehan,Leopold12,Hannah Keehan,20keehah@elmbrookstudents.org,2629554821,false
 rmittal,tennis,Rajat Mittal,raj@gmail.com,2627777777,false
+leob,leosPass,Leo Brunette,leorbrunette@gmail.com,2629554821,false
+admin,password,Admin,admin@restaurantadvisor.java,2621234567,true

@@ -1,4 +1,4 @@
-package account;
+package login;
 
 import database.DatabaseReader;
 import detail.DetailWrapper;
@@ -24,20 +24,18 @@ import model.Restaurant;
 import model.User;
 import model.arraySortedList.ArraySortedList;
 
-public class EditAccountController {
+public class CreateAccountController {
 	private Stage thisStage;
-	private ListWrapper wrap;
-	private User user;
+	private LoginWrapper wrap;
 	@FXML TextField name;
 	@FXML TextField username;
 	@FXML PasswordField password;
 	@FXML TextField email;
 	@FXML TextField phoneNumber;
 	
-	public EditAccountController(ListWrapper r) {
+	public CreateAccountController(LoginWrapper r) {
 		thisStage = new Stage();
 		wrap = r;
-		user = wrap.getUser();
 		Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/account/editAccount.fxml"));
@@ -48,11 +46,6 @@ public class EditAccountController {
     	} catch (Exception e) {
     		System.out.println(e);
     	}
-		name.setText(user.getName());
-		username.setText(user.getUsername());
-		password.setText(user.getPassword());
-		email.setText(user.getEmail().getEmail());
-		phoneNumber.setText(user.getPhoneNumber().print());
 	}
 	public void showStage() {
 		thisStage.show();
@@ -63,9 +56,8 @@ public class EditAccountController {
 	}
 	@FXML
 	public void submit(ActionEvent e) {
-		User newUser = wrap.getUser();
+		User newUser = null;
 		ArraySortedList<User> newDB = wrap.getUserDB();
-		newDB.remove(newUser);
 		String numS = phoneNumber.getText();
 		if(numS.contains("(")||numS.contains(")")) {
 			//System.out.println(numS);
@@ -79,15 +71,15 @@ public class EditAccountController {
 		if(numS.contains(" ")) {
 			numS = numS.replaceAll(" ","");
 		}
-		System.out.println(numS);
+		//System.out.println(numS);
 		PhoneNumber num = new PhoneNumber(numS);
-		newUser= new User(username.getText(),password.getText(),name.getText(),new Email(email.getText()),num, user.isAdmin());
+		newUser= new User(username.getText(),password.getText(),name.getText(),new Email(email.getText()),num, false);
 		newDB.add(newUser);
 		DatabaseReader writer = new DatabaseReader();
 		writer.writeUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src"), newDB);
 		//Call add review in the database writer class passing the restaurant, rating, description
 		
-		AccountController refreshedDetail = new AccountController(new ListWrapper(wrap.getEvent(), newUser, newDB, wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		LoginController refreshedDetail = new LoginController(wrap);
 		refreshedDetail.showStage();
 		thisStage.close();
 	}

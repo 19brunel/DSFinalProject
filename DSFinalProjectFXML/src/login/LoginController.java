@@ -24,6 +24,7 @@ import model.arraySortedList.ArraySortedList;
 
 public class LoginController implements Initializable{
 	private final Stage thisStage;
+	private LoginWrapper wrap;
 	protected ArraySortedList<User> userDB;
 	protected ArraySortedList<Restaurant> restaurantDB;
 	@FXML private TextField username;
@@ -34,6 +35,7 @@ public class LoginController implements Initializable{
 		userDB = wrap.getUserDB();
 		restaurantDB = wrap.getRestaurantDB();
 		thisStage = wrap.getStage();
+		this.wrap = wrap;
 		Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/login/login.fxml"));
@@ -69,6 +71,12 @@ public class LoginController implements Initializable{
 			listController.showStage();
 		}
 	}
+	@FXML
+	private void create() {
+		CreateAccountController createCont = new CreateAccountController(wrap);
+		createCont.showStage();
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
