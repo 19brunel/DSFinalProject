@@ -78,9 +78,12 @@ public class DetailController implements Initializable{
 		thisStage = (Stage)((Node)wrap.getEvent().getSource()).getScene().getWindow();
     	dinning = new Text(restaurant.getCuisineType()+" "+restaurant.getDinningType());
     	banner = new ImageView(new Image(restaurant.getBannerURL()));
-    	banner.setClip(banner.getParent());
-    	//banner.setFitWidth(900);
-    	//banner.setFitHeight(200);
+    	banner.minWidth(900);
+    	banner.setFitWidth(900);
+    	banner.prefWidth(900);
+    	banner.maxWidth(900);
+    	banner.maxHeight(200);
+    	banner.setPreserveRatio(true);
     	BoxBlur boxBlur = new BoxBlur();
     	boxBlur.setWidth(10);
     	boxBlur.setHeight(3);
@@ -130,6 +133,7 @@ public class DetailController implements Initializable{
     	ratDin = new HBox(rating, dinning);
     	ratDin.setAlignment(Pos.CENTER_LEFT);
     	restaurantInfo = new VBox(restaurantName, ratDin, address);
+    	restaurantInfo.setAlignment(Pos.BOTTOM_LEFT);
     	restaurantInfo.setStyle("-fx-fill: WHITE;");
     	imageContainer = new StackPane(banner, restaurantInfo);
     	imageContainer.setAlignment(Pos.BOTTOM_LEFT);
