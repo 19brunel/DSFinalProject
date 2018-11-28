@@ -70,8 +70,7 @@ public class AccountController {
 		edit.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
-    			AddReviewController adder = new AddReviewController(new DetailWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), wrap.getRestaurant(),wrap.getOrder()));
-    			adder.showStage();
+    			
     		}
     	});
 		container = new VBox(name, login, eMail, phNumber, edit);
