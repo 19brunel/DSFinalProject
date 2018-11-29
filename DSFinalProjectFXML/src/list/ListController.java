@@ -69,6 +69,7 @@ public class ListController implements Initializable {
 		filter = wrap.getFilter();
 		restaurantDB = wrap.getRestaurantDB();
 		restaurantList = new ListView<Restaurant>();
+		restaurantList.setStyle("-fx-background-insets: 0;");
 		thisStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		Parent root = null;
 		// System.out.println("List: Trying to load scene.");

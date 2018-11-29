@@ -22,6 +22,7 @@ import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -65,7 +66,7 @@ public class DetailController implements Initializable{
 	private Text menuTitle;
 	private Text reviewTitle;
 	private Button addReview;
-	private HBox reviewHeader;
+	private VBox reviewHeader;
 	@FXML private ScrollPane restaurantScroll;
 	@FXML private ScrollPane sideBar;
 	@FXML private Button find;
@@ -94,6 +95,8 @@ public class DetailController implements Initializable{
     	rating.setFitHeight(25);
     	rating.setPreserveRatio(true);
     	menuTitle = new Text("MENU");
+    	HBox menuBox = new HBox(menuTitle);
+    	menuBox.setAlignment(Pos.CENTER);
     	menuTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
     	menuTitle.setTextAlignment(TextAlignment.CENTER);
     	sideBar = new ScrollPane();
@@ -111,7 +114,8 @@ public class DetailController implements Initializable{
     		}
     	});
     	//addReview.setOnAction();
-    	reviewHeader = new HBox(reviewTitle, addReview);
+    	reviewHeader = new VBox(reviewTitle, addReview);
+    	reviewHeader.setAlignment(Pos.CENTER);
     	menuList = new ListView<FoodItem>();
     	reviewList = new ListView<Rating>();
     	switch((int)restaurant.getAvgRating()) {
@@ -146,7 +150,8 @@ public class DetailController implements Initializable{
     	imageContainer = new StackPane(banner, restaurantInfo);
     	imageContainer.setAlignment(Pos.BOTTOM_LEFT);
     	restaurantScroll = new ScrollPane();
-    	container = new VBox(imageContainer, menuTitle, menuList, reviewHeader, reviewList);
+    	container = new VBox(imageContainer, menuBox, menuList, reviewHeader, reviewList);
+    	container.setStyle("-fx-background-color: white;");
     	Parent root = null;
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/detail/detail.fxml"));
@@ -167,6 +172,7 @@ public class DetailController implements Initializable{
     	}
     	menuList.setItems(menu);
     	menuList.setPrefHeight(menu.size() * 50);
+    	menuList.setStyle("-fx-background-insets: 0;");
 		menuList.setCellFactory(new Callback<ListView<FoodItem>, ListCell<FoodItem>>() {
             @Override
             public ListCell<FoodItem> call(ListView<FoodItem> listView) {
@@ -184,6 +190,7 @@ public class DetailController implements Initializable{
     	}
     	reviewList.setItems(reviews);
     	reviewList.setPrefHeight(reviews.size()*40);
+    	reviewList.setStyle("-fx-background-insets: 0;");
 		reviewList.setCellFactory(new Callback<ListView<Rating>, ListCell<Rating>>() {
             @Override
             public ListCell<Rating> call(ListView<Rating> listView) {
@@ -191,6 +198,7 @@ public class DetailController implements Initializable{
             }
         });
 		restaurantScroll.setContent(container);
+		restaurantScroll.setStyle("-fx-background-insets: 0;");
 		sideBar.setContent(order.getContainer());
 	}
 	public void showStage() {

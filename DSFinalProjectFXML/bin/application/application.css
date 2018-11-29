@@ -5,6 +5,12 @@
 .list-cell:empty {
     visibility:hidden;
 }
+#restaurantList .list-cell:even {
+-fx-background-color: rgba(0,0,0,0);
+}
+#restaurantList .list-cell:odd {
+-fx-background-color: rgba(0,0,0,0);
+}
 #restaurantScroll .list-cell:even {
 -fx-background-color: rgba(0,0,0,0);
 }
