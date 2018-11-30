@@ -20,7 +20,7 @@
           </font>
         </Button>
         <Button fx:id="doneButton" font="$x1" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" onAction="#submit" text="DONE" />
-        <Text fill="#e31c60" layoutX="155.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT ACCOUNT">
+        <Text fill="#e31c60" layoutX="120.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT">
           <font>
             <Font name="Century Gothic" size="40.0" />
           </font>
@@ -34,13 +34,9 @@
           </textFill>
         </Label>
         <Label font="$x2" layoutX="145.0" layoutY="148.0" text="USERNAME" textFill="$x3" />
-        <Label font="$x2" layoutX="145.0" layoutY="198.0" text="PASSWORD">
-          <textFill>
-            <Color blue="0.259" green="0.259" red="0.259" fx:id="x4" />
-          </textFill>
-        </Label>
-        <Label font="$x2" layoutX="145.0" layoutY="248.0" text="EMAIL" textFill="$x4" />
-        <Label font="$x2" layoutX="145.0" layoutY="298.0" text="PHONE NUMBER" textFill="$x4" />
+        <Label font="$x2" layoutX="145.0" layoutY="198.0" text="PASSWORD" textFill="$x3" />
+        <Label font="$x2" layoutX="145.0" layoutY="248.0" text="EMAIL" textFill="$x3" />
+        <Label font="$x2" layoutX="145.0" layoutY="298.0" text="PHONE NUMBER" textFill="$x3" />
         <TextField fx:id="name" layoutX="209.0" layoutY="100.0" prefWidth="290.56640625" />
         <TextField fx:id="username" layoutX="255.0" layoutY="150.0" prefWidth="245.0" />
         <PasswordField fx:id="password" layoutX="261.0" layoutY="200.0" prefWidth="239.0" />
