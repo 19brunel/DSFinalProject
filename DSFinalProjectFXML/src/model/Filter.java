@@ -1,17 +1,25 @@
 package model;
 
 public class Filter {
+	protected String search;
 	protected String dinning;
 	protected String cuisine;
 	protected int rating;
 	protected double minPrice;
 	protected boolean useFilter;
-	public Filter(String c, String s, int r, double m, boolean u) {
+	public Filter(String se, String c, String s, int r, double m, boolean u) {
+		search = se;
 		cuisine = c;
 		dinning = s;
 		rating = r;
 		minPrice = m;
 		useFilter = u;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String s) {
+		search = s;
 	}
 	public String getDinning() {
 		return dinning;

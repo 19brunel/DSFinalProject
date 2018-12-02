@@ -22,6 +22,7 @@ import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -60,6 +61,8 @@ public class ListController implements Initializable {
 	private TextField minPrice;
 	@FXML
 	private HBox ratingButtons;
+	@FXML
+	private TextField search;
 
 	public ListController(ListWrapper wrap) {
 		this.wrap = wrap;
@@ -87,11 +90,23 @@ public class ListController implements Initializable {
 		Restaurant curRest = null;
 		boolean meetsFilter = true;
 		for (int x = 0; x < restaurantDB.size(); x++) {
+			meetsFilter = true;
 			curRest = restaurantDB.getNext();
 			if (filter.getUseFilter()) {
-				if (filter.getDinning().equals("") || filter.getDinning().equals("None") || (curRest.getCuisineType() + " " + curRest.getDinningType()).equals(filter.getCuisine()+" "+filter.getDinning())){
-				} else {
-					System.out.println("False because dinning.");
+				if(!curRest.getName().toLowerCase().contains(filter.getSearch().toLowerCase())) {
+					System.out.println("False because search.");
+					meetsFilter=false;
+				}
+				if(filter.getDinning().equals("") || filter.getDinning().equals("None") || curRest.getDinningType().equals(filter.getDinning())) {
+				}else {
+					System.out.println(curRest.getName()+" False because dinning.");
+					meetsFilter = false;
+				}
+				if(filter.getCuisine().equals("") || filter.getCuisine().equals("None")|| curRest.getCuisineType().equals(filter.getCuisine())) {
+					System.out.println(curRest.getCuisineType()+"-"+filter.getCuisine());
+				}else {
+					System.out.println(curRest.getName()+" False because cuisine.");
+					System.out.println(curRest.getCuisineType()+"-"+filter.getCuisine());
 					meetsFilter = false;
 				}
 				if (filter.getRating() > 0 && filter.getRating() < 6) {
@@ -113,6 +128,7 @@ public class ListController implements Initializable {
 				meetsFilter = true;
 			}
 			if (meetsFilter) {
+				System.out.println("Adding: "+curRest.getName());
 				restList.add(curRest);
 			}
 		}
@@ -139,7 +155,7 @@ public class ListController implements Initializable {
 		}else {
 			dinning.setValue("None");
 		}
-		
+		search.setText(filter.getSearch());
 		filterValue = filter.getRating();
 		switch (filterValue) {
 		case 0:
@@ -175,7 +191,7 @@ public class ListController implements Initializable {
 	}
 	@FXML
 	public void account(ActionEvent event) {
-		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
 		accountCont.showStage();
 	}
 	@FXML
@@ -204,10 +220,38 @@ public class ListController implements Initializable {
 		}
 		//System.out.println(filterString + "-" + filterValue + "-" + price + "-" + useFil);
 		ListController listController = new ListController(new ListWrapper(event, user, userDB, restaurantDB,
-				new Filter(cuisineString, dinningString, filterValue, price, useFil)));
+				new Filter(search.getText(),cuisineString, dinningString, filterValue, price, useFil)));
 		listController.showStage();
 	}
-
+	@FXML
+	public void search(ActionEvent event) {
+		System.out.println("Searching.");
+		boolean useFil = false;
+		String cuisineString = "";
+		String dinningString = "";
+		System.out.println(cuisine.getValue() + " " + dinning.getValue());
+		if (cuisine.getValue() != null && dinning.getValue() != null) {
+			//if (!cuisine.getValue().equals("None") || !dinning.getValue().equals("None")) {
+				cuisineString = (String)cuisine.getValue();
+				dinningString = (String)dinning.getValue();
+				useFil = true;
+			//}
+		}
+		if (filterValue > 0) {
+			useFil = true;
+		}
+		double price = 0;
+		if (!minPrice.getText().equals("")) {
+			if (Double.parseDouble(minPrice.getText()) > 0) {
+				useFil = true;
+				price = Double.parseDouble(minPrice.getText());
+			}
+		}
+		//System.out.println(filterString + "-" + filterValue + "-" + price + "-" + useFil);
+		ListController listController = new ListController(new ListWrapper(event, user, userDB, restaurantDB,
+				new Filter(search.getText(),cuisineString, dinningString, filterValue, price, useFil)));
+		listController.showStage();
+	}
 	@FXML
 	public void logout(ActionEvent event) {
 		LoginController loginController = new LoginController(new LoginWrapper(userDB, restaurantDB, thisStage));

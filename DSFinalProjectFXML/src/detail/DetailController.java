@@ -206,7 +206,7 @@ public class DetailController implements Initializable{
 	}
 	@FXML
 	public void find(ActionEvent event) {
-		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
 		list.showStage();
 	}
 	@FXML
@@ -216,7 +216,7 @@ public class DetailController implements Initializable{
 	}
 	@FXML
 	public void account(ActionEvent event) {
-		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
 		accountCont.showStage();
 	}
 	@Override

@@ -87,7 +87,7 @@ public class EditAccountController {
 		writer.writeUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src"), newDB);
 		//Call add review in the database writer class passing the restaurant, rating, description
 		
-		AccountController refreshedDetail = new AccountController(new ListWrapper(wrap.getEvent(), newUser, newDB, wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		AccountController refreshedDetail = new AccountController(new ListWrapper(wrap.getEvent(), newUser, newDB, wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
 		refreshedDetail.showStage();
 		thisStage.close();
 	}

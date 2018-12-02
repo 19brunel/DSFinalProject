@@ -3,7 +3,7 @@ Vino Cappuccino
 This relaxed Italian restaurant features pizza, pasta, martinis & an occasional live piano player.
 /database/restaurantImages/vinoIcon.jpg,/database/restaurantImages/vinoBanner.jpg
 2848 N Brookfield Rd, Brookfield, WI 53045
-2.627979061E9,www.vinocapp.com,Italian,Casual Dinning,8.95,19.65
+2.627979061E9,www.vinocapp.com,Italian,Casual Dining,8.95,19.65
 11AM-9PM,11AM-9PM,11AM-9PM,11AM-9PM,11AM-10PM,11AM-10PM,11AM-9PM
 4-Hey this restaurant is so nice.;5-Beautiful restaurant with amazing italian food.;4-The pizza is amazing, so is the pasta.;5-The food, the live piano. Perfect!;5-Wow this restaurant advisor thing is really good.;
 8.95:Caponata-An authentic Sicilian spread of chopped eggplant, celery, onion, capers, in tomato sauce, warmed in the oven and topped with melted mozzarella. Served with our house;19.65:Vino's Signature 12"-Pesto sauce, pepperoni, salami, mortadella, olives, giardiniera, green peppers, mozzarella, provolone and asiago cheese blend.;11.95:Eggplant Gorgonzola-Eggplant stuffed with gorgonzola cheese and topped with tomato sauce and parmesan.;

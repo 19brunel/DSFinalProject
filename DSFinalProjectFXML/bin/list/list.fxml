@@ -43,8 +43,8 @@
                     <Font size="20.0" fx:id="x2" />
                   </font>
                 </Button>
-                <Button fx:id="account" onAction="#account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
-                <Button fx:id="logout" onAction="#logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
+                <Button fx:id="logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
               </children>
             </AnchorPane>
           </children>
@@ -52,12 +52,12 @@
         <AnchorPane layoutX="0.0" layoutY="100.0" maxWidth="300.0" minWidth="300.0" prefHeight="548.0" prefWidth="300.0">
           <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#efefef" height="548.0000999999975" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" />
-            <Text fill="$x3" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I want">
+            <Text fill="$x3" layoutX="14.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I want">
               <font>
                 <Font name="Century Gothic" size="30.0" fx:id="x5" />
               </font>
             </Text>
-            <ChoiceBox fx:id="cuisine" layoutX="14.0" layoutY="51.0" prefHeight="39.90234375" prefWidth="272.0">
+            <ChoiceBox fx:id="cuisine" layoutX="14.0" layoutY="134.0" prefHeight="39.90234375" prefWidth="272.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="None" />
@@ -67,28 +67,35 @@
                 </FXCollections>
               </items>
             </ChoiceBox>
-            <ChoiceBox fx:id="dinning" layoutX="14.0" layoutY="99.0" prefHeight="39.90234375" prefWidth="272.0">
+            <ChoiceBox fx:id="dinning" layoutX="14.0" layoutY="182.0" prefHeight="39.90234375" prefWidth="272.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="None" />
-                  <String fx:value="Fine Dinning" />
+                  <String fx:value="Fine Dining" />
                   <String fx:value="Fast Food" />
-                  <String fx:value="Casual Dinning" />
+                  <String fx:value="Casual Dining" />
                 </FXCollections>
               </items>
             </ChoiceBox>
-            <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating" />
-            <HBox fx:id="ratingButtons" layoutX="14.0" layoutY="205.0" prefHeight="52.0" prefWidth="272.0">
+            <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating" />
+            <HBox fx:id="ratingButtons" layoutX="14.0" layoutY="288.0" prefHeight="52.0" prefWidth="272.0">
               <children>
-                <Button fx:id="subtract" onAction="#subtract" mnemonicParsing="false" text="-" />
+                <Button fx:id="subtract" mnemonicParsing="false" onAction="#subtract" text="-" />
                 <ImageView fx:id="rating" fitHeight="36.7822265625" fitWidth="49.04296875" pickOnBounds="true" preserveRatio="true" />
-                <Button fx:id="add" onAction="#add" mnemonicParsing="false" text="+" />
+                <Button fx:id="add" mnemonicParsing="false" onAction="#add" text="+" />
               </children>
             </HBox>
-            <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum Price" />
-            <Label font="$x5" layoutX="14.0" layoutY="288.0" text="\$" textFill="$x6" />
-            <TextField fx:id="minPrice" layoutX="36.0" layoutY="292.0" prefHeight="30.000099999997474" prefWidth="104.0" promptText="Enter min price" style="-fx-font-size: 20;&#10;-fx-fill: rgb(227,28,96);&#10;&#10;" text="0" />
-            <Button fx:id="apply" onAction="#apply" font="$x5" layoutX="28.0" layoutY="462.0" mnemonicParsing="false" text="APPLY FILTERS" />
+            <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum Price" />
+            <Label font="$x5" layoutX="14.0" layoutY="371.0" text="\$" textFill="$x6" />
+            <TextField fx:id="minPrice" layoutX="36.0" layoutY="375.0" prefHeight="30.000099999997474" prefWidth="104.0" promptText="Enter min price" style="-fx-font-size: 20;&#10;-fx-fill: rgb(227,28,96);&#10;&#10;" text="0" />
+            <Button fx:id="apply" font="$x5" layoutX="28.0" layoutY="462.0" mnemonicParsing="false" onAction="#apply" text="APPLY FILTERS" />
+            <Text fill="#424242" font="$x5" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by name" />
+            <TextField fx:id="search" layoutX="14.0" layoutY="51.0" prefHeight="30.0" prefWidth="198.3876953125" promptText="Restaurant Name" style="-fx-font-size: 15;&#10;-fx-fill: rgb(227,28,96);&#10;&#10;" text="" />
+            <Button fx:id="searchButton" graphicTextGap="2.0" layoutX="213.0" layoutY="51.0" minHeight="31.0" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="73.0" text="SEARCH" textAlignment="CENTER">
+              <font>
+                <Font name="Century Gothic" size="12.0" />
+              </font>
+            </Button>
           </children>
         </AnchorPane>
         <AnchorPane layoutX="300.0" layoutY="100.0" prefHeight="549.0" prefWidth="852.0">

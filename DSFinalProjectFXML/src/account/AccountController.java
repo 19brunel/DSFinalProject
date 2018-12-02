@@ -70,7 +70,7 @@ public class AccountController {
 		edit.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {
-    			EditAccountController editCont = new EditAccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+    			EditAccountController editCont = new EditAccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
     			editCont.showStage();
     		}
     	});
@@ -98,7 +98,7 @@ public class AccountController {
 	}
 	@FXML
 	public void find(ActionEvent event) {
-		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("None","None", 0, 0, false)));
+		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
 		list.showStage();
 	}
 	@FXML
