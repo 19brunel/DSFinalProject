@@ -23,6 +23,7 @@ import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -35,6 +36,8 @@ import model.Filter;
 import model.Restaurant;
 import model.User;
 import model.arraySortedList.ArraySortedList;
+import start.StartController;
+import start.StartWrapper;
 
 public class ListController implements Initializable {
 	private final Stage thisStage;
@@ -188,6 +191,11 @@ public class ListController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 
+	}
+	@FXML
+	public void start(MouseEvent mevent) {
+		StartController starter = new StartController(new StartWrapper(thisStage, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
+		starter.showStage();
 	}
 	@FXML
 	public void account(ActionEvent event) {

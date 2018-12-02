@@ -11,6 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import login.LoginController;
 import login.LoginWrapper;
+import model.Filter;
+import start.StartController;
+import start.StartWrapper;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -29,7 +32,9 @@ public class Main extends Application {
     	//LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase("/Users/rajatmittal/Desktop/Eclipse /DSFinalProject/DSFinalProjectFXML/src/database/userDB.txt"),new DatabaseReader().readRestaurantDatabase("/Users/rajatmittal/Desktop/Eclipse /DSFinalProject/DSFinalProjectFXML/src/database/restaurantDB.txt"), new Stage()));
     	//LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase(getClass().getResource("/Users/rajatmittal/Desktop/Eclipse /DSFinalProject/DSFinalProjectFXML/src/database/userDB.txt").getPath()),new DatabaseReader().readRestaurantDatabase(getClass().getResource("/Users/rajatmittal/Desktop/Eclipse /DSFinalProject/DSFinalProjectFXML/src/database/restaurantDB.txt").getPath()), new Stage()));
     	//Windows
-    	LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")),new DatabaseReader().readRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")), new Stage()));
-    	loginController.showStage();
+    	StartController starter = new StartController(new StartWrapper(new Stage(), null, new DatabaseReader().readUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")),new DatabaseReader().readRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")),null));
+		starter.showStage();
+    	//LoginController loginController = new LoginController(new LoginWrapper(new DatabaseReader().readUserDatabase(getClass().getResource("/database/userDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")),new DatabaseReader().readRestaurantDatabase(getClass().getResource("/database/restaurantDB.txt").getPath().replaceAll("/", "\\\\").substring(1).replaceAll("%20", " ").replaceAll("bin", "src")), new Stage()));
+    	//loginController.showStage();
     }
 }

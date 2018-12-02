@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -25,6 +26,8 @@ import login.LoginController;
 import login.LoginWrapper;
 import model.Filter;
 import model.User;
+import start.StartController;
+import start.StartWrapper;
 
 public class AccountController {
 	private Stage thisStage;
@@ -95,6 +98,11 @@ public class AccountController {
 	}
 	public void showStage() {
 		thisStage.show();
+	}
+	@FXML
+	public void start(MouseEvent mevent) {
+		StartController starter = new StartController(new StartWrapper(thisStage, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
+		starter.showStage();
 	}
 	@FXML
 	public void find(ActionEvent event) {

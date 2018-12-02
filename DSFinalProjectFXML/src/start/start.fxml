@@ -14,44 +14,18 @@
   <children>
     <AnchorPane id="container" prefHeight="648.0" prefWidth="1152.0">
       <children>
-        <AnchorPane layoutX="0.0" layoutY="0.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="1152.0">
+        <AnchorPane layoutX="0.0" layoutY="100.0" prefHeight="549.0" prefWidth="1152.0">
           <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1152.0">
+            <TextField fx:id="search" layoutX="284.0" layoutY="98.0" prefHeight="35.0" prefWidth="500.0" />
+            <Text layoutX="420.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEARCH RESTAURANTS">
               <fill>
                 <Color blue="0.376" green="0.110" red="0.890" fx:id="x5" />
               </fill>
-            </Rectangle>
-            <Text fill="WHITE" layoutX="107.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANT">
               <font>
                 <Font size="30.0" fx:id="x1" />
               </font>
             </Text>
-            <ImageView fitHeight="63.519530691505466" fitWidth="56.13353729248047" layoutX="30.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-              <image>
-                <Image url="@iconGRAY.png" />
-              </image>
-            </ImageView>
-            <Text font="$x1" layoutX="303.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR">
-              <fill>
-                <Color blue="0.259" green="0.259" red="0.259" fx:id="x3" />
-              </fill>
-            </Text>
-            <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
-              <children>
-                <Button fx:id="login" layoutX="407.0" layoutY="20.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGIN" textFill="WHITE">
-                  <font>
-                    <Font size="20.0" fx:id="x2" />
-                  </font>
-                </Button>
-              </children>
-            </AnchorPane>
-          </children>
-        </AnchorPane>
-        <AnchorPane layoutX="0.0" layoutY="100.0" prefHeight="549.0" prefWidth="1152.0">
-          <children>
-            <TextField layoutX="284.0" layoutY="98.0" prefHeight="35.0" prefWidth="500.0" />
-            <Text fill="$x5" font="$x1" layoutX="420.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEARCH RESTAURANTS" />
-            <Button fx:id="search" onAction="search" layoutX="783.0" layoutY="99.0" mnemonicParsing="false" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="SEARCH" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="searchButton" layoutX="783.0" layoutY="99.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="SEARCH" textAlignment="CENTER" textFill="WHITE">
               <font>
                 <Font size="18.0" />
               </font>
@@ -69,6 +43,33 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="60.0" layoutX="676.0" layoutY="297.0" rotate="45.0" scaleX="0.25" scaleY="0.25" scaleZ="0.5" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="60.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x5" height="84.852783203125" layoutX="669.0" layoutY="285.0" scaleX="0.25" scaleY="0.25" scaleZ="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="60.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="31.921875" layoutX="542.0" layoutY="311.0" scaleX="0.25" scaleY="0.25" scaleZ="0.5" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="262.0" />
+          </children>
+        </AnchorPane>
+        <AnchorPane layoutX="0.0" layoutY="0.0" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="1152.0">
+          <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e31c60" height="100.0" layoutX="0.0" layoutY="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1152.0" />
+            <Text fill="WHITE" font="$x1" layoutX="107.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESTAURANT" />
+            <ImageView fitHeight="63.519530691505466" fitWidth="56.13353729248047" layoutX="30.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+              <image>
+                <Image url="@../list/iconGRAY.png" />
+              </image>
+            </ImageView>
+            <Text font="$x1" layoutX="303.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADVISOR">
+              <fill>
+                <Color blue="0.259" green="0.259" red="0.259" fx:id="x3" />
+              </fill>
+            </Text>
+            <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
+              <children>
+                <Button fx:id="find" onAction="#list" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
+                  <font>
+                    <Font size="20.0" fx:id="x2" />
+                  </font>
+                </Button>
+                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
+                <Button fx:id="logger" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logger" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+              </children>
+            </AnchorPane>
           </children>
         </AnchorPane>
       </children>
