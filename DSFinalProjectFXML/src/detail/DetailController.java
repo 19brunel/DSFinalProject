@@ -21,6 +21,8 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
@@ -48,7 +50,7 @@ import model.arraySortedList.ArraySortedList;
 import start.StartController;
 import start.StartWrapper;
 
-public class DetailController implements Initializable{
+public class DetailController implements Initializable {
 	private final Stage thisStage;
 	protected ArraySortedList<User> userDB;
 	protected ArraySortedList<Restaurant> restaurantDB;
@@ -58,7 +60,8 @@ public class DetailController implements Initializable{
 	private VBox restaurantInfo;
 	private Text restaurantName;
 	private HBox ratDin;
-	private ImageView rating; private Text dinning;
+	private ImageView rating;
+	private Text dinning;
 	private StackPane imageContainer;
 	private ImageView banner;
 	private Text address;
@@ -70,10 +73,13 @@ public class DetailController implements Initializable{
 	private Text reviewTitle;
 	private Button addReview;
 	private VBox reviewHeader;
-	@FXML private ScrollPane restaurantScroll;
-	@FXML private ScrollPane sideBar;
-	@FXML private Button find;
-	
+	@FXML
+	private ScrollPane restaurantScroll;
+	@FXML
+	private ScrollPane sideBar;
+	@FXML
+	private Button find;
+
 	public DetailController(DetailWrapper w) {
 		this.wrap = w;
 		userDB = wrap.getUserDB();
@@ -81,181 +87,221 @@ public class DetailController implements Initializable{
 		user = wrap.getUser();
 		restaurant = wrap.getRestaurant();
 		order = wrap.getOrder();
-		thisStage = (Stage)((Node)wrap.getEvent().getSource()).getScene().getWindow();
-    	dinning = new Text(restaurant.getCuisineType()+" "+restaurant.getDinningType());
-    	banner = new ImageView(new Image(restaurant.getBannerURL()));
-    	banner.setFitWidth(900);
-    	banner.boundsInParentProperty();
-    	banner.setClip(new Rectangle(900,200));
-    	banner.setPreserveRatio(false);
-    	banner.setFitHeight(200);
-    	BoxBlur boxBlur = new BoxBlur();
-    	boxBlur.setWidth(10);
-    	boxBlur.setHeight(3);
-    	boxBlur.setIterations(3);
-    	banner.setEffect(boxBlur);
-    	rating = new ImageView();
-    	rating.setFitHeight(25);
-    	rating.setPreserveRatio(true);
-    	menuTitle = new Text("MENU");
-    	HBox menuBox = new HBox(menuTitle);
-    	menuBox.setAlignment(Pos.CENTER);
-    	menuTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
-    	menuTitle.setTextAlignment(TextAlignment.CENTER);
-    	sideBar = new ScrollPane();
-    	sideBar.setStyle("-fx-background-color: #efefef; ");
-    	address = new Text(restaurant.getAddress());
-    	reviewTitle = new Text("REVIEWS");
-    	reviewTitle.setTextAlignment(TextAlignment.CENTER);
-    	reviewTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
-    	addReview = new Button("WRITE A REVIEW");
-    	addReview.setOnAction(new EventHandler<ActionEvent>() {
-    		@Override
-    		public void handle(ActionEvent event) {
-    			AddReviewController adder = new AddReviewController(new DetailWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), wrap.getRestaurant(),wrap.getOrder()));
-    			adder.showStage();
-    		}
-    	});
-    	//addReview.setOnAction();
-    	reviewHeader = new VBox(reviewTitle, addReview);
-    	reviewHeader.setAlignment(Pos.CENTER);
-    	menuList = new ListView<FoodItem>();
-    	reviewList = new ListView<Rating>();
-    	switch((int)restaurant.getAvgRating()) {
-    	case 0:
+		thisStage = (Stage) ((Node) wrap.getEvent().getSource()).getScene().getWindow();
+		dinning = new Text(restaurant.getCuisineType() + " " + restaurant.getDinningType());
+		Image Img = new Image(restaurant.getBannerURL());
+		PixelReader reader = Img.getPixelReader();
+		boolean didCrop = false;
+		while (didCrop == false) {
+			if (Img.getWidth() >= 900 && Img.getHeight() >= 200) {
+				System.out.println("Cropping.");
+				reader = Img.getPixelReader();
+				WritableImage cropped = new WritableImage(reader, (int)Img.getWidth()/2-450, (int)Img.getHeight()/2-100, 900, 200);
+				Img = cropped;
+				didCrop = true;
+			} else {
+				System.out.println("Resizing.");
+				System.out.println(Img.getWidth()+","+Img.getHeight());
+				Img = new Image(restaurant.getBannerURL(),Img.getWidth()*2,Img.getHeight()*2,true,false);
+				System.out.println(Img.getWidth()+","+Img.getHeight());
+			}
+		}
+		banner = new ImageView(Img);
+		banner.setFitWidth(900);
+		banner.boundsInParentProperty();
+		banner.setClip(new Rectangle(900, 200));
+		banner.setPreserveRatio(false);
+		banner.setFitHeight(200);
+		BoxBlur boxBlur = new BoxBlur();
+		boxBlur.setWidth(10);
+		boxBlur.setHeight(3);
+		boxBlur.setIterations(3);
+		banner.setEffect(boxBlur);
+		rating = new ImageView();
+		rating.setFitHeight(25);
+		rating.setPreserveRatio(true);
+		menuTitle = new Text("MENU");
+		HBox menuBox = new HBox(menuTitle);
+		menuBox.setAlignment(Pos.CENTER);
+		menuTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
+		menuTitle.setTextAlignment(TextAlignment.CENTER);
+		sideBar = new ScrollPane();
+		sideBar.setStyle("-fx-background-color: #efefef; ");
+		address = new Text(restaurant.getAddress());
+		reviewTitle = new Text("REVIEWS");
+		reviewTitle.setTextAlignment(TextAlignment.CENTER);
+		reviewTitle.setStyle("-fx-fill:#e31c60; -fx-font-size: 30;");
+		addReview = new Button("WRITE A REVIEW");
+		addReview.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				AddReviewController adder = new AddReviewController(new DetailWrapper(event, wrap.getUser(),
+						wrap.getUserDB(), wrap.getRestaurantDB(), wrap.getRestaurant(), wrap.getOrder()));
+				adder.showStage();
+			}
+		});
+		// addReview.setOnAction();
+		reviewHeader = new VBox(reviewTitle, addReview);
+		reviewHeader.setAlignment(Pos.CENTER);
+		menuList = new ListView<FoodItem>();
+		reviewList = new ListView<Rating>();
+		switch ((int) restaurant.getAvgRating()) {
+		case 0:
 			rating.setImage(new Image("/starIcons/0star.png"));
 			break;
-        case 1:
-        	rating.setImage(new Image("/starIcons/1star.png"));
-        	break;
-        case 2:
-        	rating.setImage(new Image("/starIcons/2star.png"));
-        	break;
-        case 3:
-        	rating.setImage(new Image("/starIcons/3star.png"));
-        	break;
-        case 4:
-        	rating.setImage(new Image("/starIcons/4star.png"));
-        	break;
-        case 5:
-        	rating.setImage(new Image("/starIcons/5star.png"));
-        	break;
-        }
-    	restaurantName = new Text(restaurant.getName());
-    	ratDin = new HBox(rating, dinning);
-    	ratDin.setAlignment(Pos.CENTER);
-    	restaurantInfo = new VBox(restaurantName, ratDin, address);
-    	restaurantInfo.setAlignment(Pos.CENTER);
-    	restaurantInfo.setStyle("-fx-fill: #ffffff;");
-    	restaurantName.setStyle("-fx-fill: #ffffff; -fx-font-size: 50; -fx-stroke: #000000; -fx-stroke-width: 1; -fx-font-weight:bold;");
-    	dinning.setStyle("-fx-fill: #ffffff; -fx-font-size: 25; -fx-stroke: #000000; -fx-stroke-width: 0.5; -fx-font-weight:bold;");
-    	address.setStyle("-fx-fill: #ffffff; -fx-font-size: 25; -fx-stroke: #000000; -fx-stroke-width: 0.5; -fx-font-weight:bold;");
-    	imageContainer = new StackPane(banner, restaurantInfo);
-    	imageContainer.setAlignment(Pos.BOTTOM_LEFT);
-    	restaurantScroll = new ScrollPane();
-    	container = new VBox(imageContainer, menuBox, menuList, reviewHeader, reviewList);
-    	container.setStyle("-fx-background-color: white;");
-    	Parent root = null;
-    	try {
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/detail/detail.fxml"));
-    		loader.setController(this);
-    		root = loader.load();
-    		root.getStylesheets().add("/application/application.css");
-    		thisStage.setScene(new Scene(root));
-    	} catch (Exception e) {
-    		System.out.println(e);
-    	}
-    	ObservableList<FoodItem> menu = FXCollections.observableArrayList();
-    	restaurant.getMenu().reset();
-    	FoodItem currentItem = null;
-    	for(int x =0; x<restaurant.getMenu().size();x++) {
-    		currentItem = restaurant.getMenu().getNext();
-    		//System.out.println(currentItem);
-    		menu.add(currentItem);
-    	}
-    	menuList.setItems(menu);
-    	menuList.setPrefHeight(menu.size() * 50);
-    	menuList.setStyle("-fx-background-insets: 0;");
+		case 1:
+			rating.setImage(new Image("/starIcons/1star.png"));
+			break;
+		case 2:
+			rating.setImage(new Image("/starIcons/2star.png"));
+			break;
+		case 3:
+			rating.setImage(new Image("/starIcons/3star.png"));
+			break;
+		case 4:
+			rating.setImage(new Image("/starIcons/4star.png"));
+			break;
+		case 5:
+			rating.setImage(new Image("/starIcons/5star.png"));
+			break;
+		}
+		restaurantName = new Text(restaurant.getName());
+		ratDin = new HBox(rating, dinning);
+		ratDin.setAlignment(Pos.CENTER);
+		restaurantInfo = new VBox(restaurantName, ratDin, address);
+		restaurantInfo.setAlignment(Pos.CENTER);
+		restaurantInfo.setStyle("-fx-fill: #ffffff;");
+		restaurantName.setStyle(
+				"-fx-fill: #ffffff; -fx-font-size: 50; -fx-stroke: #000000; -fx-stroke-width: 1; -fx-font-weight:bold;");
+		dinning.setStyle(
+				"-fx-fill: #ffffff; -fx-font-size: 25; -fx-stroke: #000000; -fx-stroke-width: 0.5; -fx-font-weight:bold;");
+		address.setStyle(
+				"-fx-fill: #ffffff; -fx-font-size: 25; -fx-stroke: #000000; -fx-stroke-width: 0.5; -fx-font-weight:bold;");
+		imageContainer = new StackPane(banner, restaurantInfo);
+		imageContainer.setAlignment(Pos.BOTTOM_LEFT);
+		restaurantScroll = new ScrollPane();
+		container = new VBox(imageContainer, menuBox, menuList, reviewHeader, reviewList);
+		container.setStyle("-fx-background-color: white;");
+		Parent root = null;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/detail/detail.fxml"));
+			loader.setController(this);
+			root = loader.load();
+			root.getStylesheets().add("/application/application.css");
+			thisStage.setScene(new Scene(root));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		ObservableList<FoodItem> menu = FXCollections.observableArrayList();
+		restaurant.getMenu().reset();
+		FoodItem currentItem = null;
+		for (int x = 0; x < restaurant.getMenu().size(); x++) {
+			currentItem = restaurant.getMenu().getNext();
+			// System.out.println(currentItem);
+			menu.add(currentItem);
+		}
+		menuList.setItems(menu);
+		menuList.setPrefHeight(menu.size() * 50);
+		menuList.setStyle("-fx-background-insets: 0;");
 		menuList.setCellFactory(new Callback<ListView<FoodItem>, ListCell<FoodItem>>() {
-            @Override
-            public ListCell<FoodItem> call(ListView<FoodItem> listView) {
-                return new MenuListCell(wrap);
-            }
-        });
+			@Override
+			public ListCell<FoodItem> call(ListView<FoodItem> listView) {
+				return new MenuListCell(wrap);
+			}
+		});
 		ObservableList<Rating> reviews = FXCollections.observableArrayList();
 		ArraySortedList<Rating> resRev = restaurant.getRatings();
-    	resRev.reset();
-    	Rating currentRev = null;
-    	for(int x =0; x<resRev.size();x++) {
-    		currentRev = resRev.getNext();
-    		//System.out.println(currentItem);
-    		reviews.add(currentRev);
-    	}
-    	reviewList.setItems(reviews);
-    	reviewList.setPrefHeight(reviews.size()*40);
-    	reviewList.setStyle("-fx-background-insets: 0;");
+		resRev.reset();
+		Rating currentRev = null;
+		for (int x = 0; x < resRev.size(); x++) {
+			currentRev = resRev.getNext();
+			// System.out.println(currentItem);
+			reviews.add(currentRev);
+		}
+		reviewList.setItems(reviews);
+		reviewList.setPrefHeight(reviews.size() * 40);
+		reviewList.setStyle("-fx-background-insets: 0;");
 		reviewList.setCellFactory(new Callback<ListView<Rating>, ListCell<Rating>>() {
-            @Override
-            public ListCell<Rating> call(ListView<Rating> listView) {
-                return new ReviewListCell(wrap);
-            }
-        });
+			@Override
+			public ListCell<Rating> call(ListView<Rating> listView) {
+				return new ReviewListCell(wrap);
+			}
+		});
 		restaurantScroll.setContent(container);
 		restaurantScroll.setStyle("-fx-background-insets: 0;");
 		sideBar.setContent(order.getContainer());
 	}
+
 	public void showStage() {
 		thisStage.show();
 	}
+
 	@FXML
 	public void start(MouseEvent mevent) {
-		StartController starter = new StartController(new StartWrapper(thisStage, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
+		StartController starter = new StartController(new StartWrapper(thisStage, wrap.getUser(), wrap.getUserDB(),
+				wrap.getRestaurantDB(), new Filter("", "None", "None", 0, 0, false)));
 		starter.showStage();
 	}
+
 	@FXML
 	public void find(ActionEvent event) {
-		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
+		ListController list = new ListController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(),
+				wrap.getRestaurantDB(), new Filter("", "None", "None", 0, 0, false)));
 		list.showStage();
 	}
+
 	@FXML
 	public void logout(ActionEvent event) {
-		LoginController loginController = new LoginController(new LoginWrapper(wrap.getUserDB(),wrap.getRestaurantDB(), thisStage));
-    	loginController.showStage();
+		LoginController loginController = new LoginController(
+				new LoginWrapper(wrap.getUserDB(), wrap.getRestaurantDB(), thisStage));
+		loginController.showStage();
 	}
+
 	@FXML
 	public void account(ActionEvent event) {
-		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(), wrap.getRestaurantDB(), new Filter("","None","None", 0, 0, false)));
+		AccountController accountCont = new AccountController(new ListWrapper(event, wrap.getUser(), wrap.getUserDB(),
+				wrap.getRestaurantDB(), new Filter("", "None", "None", 0, 0, false)));
 		accountCont.showStage();
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//restaurantName.setText(restaurant.getName());
-		
+		// restaurantName.setText(restaurant.getName());
+
 	}
+
 	public void addMenuItem() {
-		
+
 	}
+
 	public ArraySortedList<User> getUserDB() {
 		return userDB;
 	}
+
 	public void setUserDB(ArraySortedList<User> userDB) {
 		this.userDB = userDB;
 	}
+
 	public ArraySortedList<Restaurant> getRestaurantDB() {
 		return restaurantDB;
 	}
+
 	public void setRestaurantDB(ArraySortedList<Restaurant> restaurantDB) {
 		this.restaurantDB = restaurantDB;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
+
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
