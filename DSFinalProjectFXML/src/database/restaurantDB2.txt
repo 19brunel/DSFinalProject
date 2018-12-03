@@ -10,7 +10,7 @@ This relaxed Italian restaurant features pizza, pasta, martinis & an occasional 
 ---
 Tangled - Noodles and More
 This Asian restaurant features many traditional Asian dishes and serves 'the best Asian food'. 
-/database/restaurantImages/vinoIcon.jpg,/database/restaurantImages/vinoBanner.jpg
+/database/restaurantImages/tangledNoodlesIcon.png,/database/restaurantImages/tangelNoodlesBanner.jpg
 1404 W Wells St, Milwaukee, WI
 4142104294, tangled-noodlesandmore.com, Chinese, Casual Dining, 7.39, 13.39
 10:00AM-9:00PM, 10:00AM-9:00PM, 10:00AM-9:00PM, 10:00AM-9:00PM, 10:00AM-9:00PM, 12:00AM-9:00PM, 12:00AM-9:00PM

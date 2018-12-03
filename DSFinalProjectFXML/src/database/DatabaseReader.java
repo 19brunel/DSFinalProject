@@ -31,7 +31,7 @@ public class DatabaseReader {
 		ArraySortedList<User> users = new ArraySortedList<User>();
 		String[] parameters = new String[6];
 		Charset charset = Charset.forName("US-ASCII");
-		// Charset charset = Charset.forName("UTF-8");
+		//Charset charset = Charset.forName("Unicode");
 		Path path = FileSystems.getDefault().getPath(url);
 		//System.out.println("Found path.");
 		try (BufferedReader reader = Files.newBufferedReader(path, charset)) {

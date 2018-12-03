@@ -64,6 +64,9 @@
                   <String fx:value="Italian" />
                   <String fx:value="Chinese" />
                   <String fx:value="Mexican" />
+                  <String fx:value="Japanese" />
+                  <String fx:value="American" />
+                  <String fx:value="Seafood" />
                 </FXCollections>
               </items>
             </ChoiceBox>
@@ -74,6 +77,10 @@
                   <String fx:value="Fine Dining" />
                   <String fx:value="Fast Food" />
                   <String fx:value="Casual Dining" />
+                  <String fx:value="Restaurant" />
+                  <String fx:value="Comfort Food" />
+                  <String fx:value="Fast Casual" />
+                  <String fx:value="Diner" />
                 </FXCollections>
               </items>
             </ChoiceBox>
@@ -100,7 +107,7 @@
         </AnchorPane>
         <AnchorPane layoutX="300.0" layoutY="100.0" prefHeight="549.0" prefWidth="852.0">
           <children>
-            <ScrollPane hbarPolicy="NEVER" layoutX="1.0" layoutY="0.0" prefHeight="549.0" prefWidth="851.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="1.0" layoutY="0.0" prefHeight="549.0" prefWidth="851.0" vbarPolicy="NEVER">
               <content>
                 <ListView fx:id="restaurantList" prefHeight="548.0002136230469" prefWidth="835.0" />
               </content>
