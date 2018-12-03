@@ -14,6 +14,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -60,9 +61,18 @@ public class RestaurantListCell extends ListCell<Restaurant>{
         icon = new ImageView();
         icon.setFitWidth(100);
         icon.setPreserveRatio(true);
+        BorderPane iconBorder = new BorderPane(icon);
+        iconBorder.setStyle("-fx-border-color: rgb(227,28,96);\r\n" + 
+				"-fx-border-width: 2;\r\n");
         button = new Button();
-        content = new HBox(icon, vBox, button);
-        content.setAlignment(Pos.CENTER_LEFT);
+        button.setStyle("-fx-background-color: rgba(0,0,0,0);\r\n" + 
+				"-fx-border-color: rgb(227,28,96);\r\n" + 
+				"-fx-fill: rgb(227,28,96);\r\n" + 
+				"-fx-border-radius: 50;\r\n" + 
+				"-fx-background-radius: 50;\r\n" + 
+				"-fx-border-width: 2;\r\n");
+        content = new HBox(iconBorder, vBox, button);
+        content.setAlignment(Pos.CENTER);
         content.setSpacing(10);
         restaurant = null;
         button.setOnAction(new EventHandler<ActionEvent>() {
