@@ -16,7 +16,7 @@
       <children>
         <AnchorPane layoutX="0.0" layoutY="100.0" prefHeight="549.0" prefWidth="1152.0">
           <children>
-            <TextField fx:id="search" layoutX="284.0" layoutY="98.0" prefHeight="35.0" prefWidth="500.0" />
+            <TextField fx:id="search" layoutX="284.0" layoutY="98.0" prefHeight="39.0" prefWidth="500.0" promptText="Enter a restaurant" style="-fx-text-size: 20;&#10;-fx-background-color: WHITE;&#10;-fx-border-color: #e31c60;&#10;-fx-border-radius: 50 0 0 50;&#10;-fx-background-radius: 50 0 0 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" />
             <Text layoutX="420.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEARCH RESTAURANTS">
               <fill>
                 <Color blue="0.376" green="0.110" red="0.890" fx:id="x5" />
@@ -25,9 +25,9 @@
                 <Font size="30.0" fx:id="x1" />
               </font>
             </Text>
-            <Button fx:id="searchButton" layoutX="783.0" layoutY="99.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="SEARCH" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="searchButton" layoutX="783.0" layoutY="97.0" mnemonicParsing="false" onAction="#search" prefHeight="39.000099999997474" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-radius: 0 10 10 0;&#10;-fx-border-radius: 0;&#10;" text="SEARCH" textAlignment="CENTER" textFill="WHITE">
               <font>
-                <Font size="18.0" />
+                <Font size="15.0" />
               </font>
             </Button>
             <Circle fill="$x5" layoutX="380.0" layoutY="327.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -61,13 +61,13 @@
             </Text>
             <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
               <children>
-                <Button fx:id="find" onAction="#list" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
+                <Button fx:id="find" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" onAction="#list" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="FIND" textFill="WHITE">
                   <font>
                     <Font size="20.0" fx:id="x2" />
                   </font>
                 </Button>
-                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
-                <Button fx:id="logger" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logger" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="MY ACCOUNT" textFill="WHITE" />
+                <Button fx:id="logger" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logger" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="LOGOUT" textFill="$x3" />
               </children>
             </AnchorPane>
           </children>

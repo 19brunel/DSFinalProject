@@ -21,7 +21,7 @@
                 <Font size="30.0" fx:id="x1" />
               </font>
             </Text>
-            <ImageView onMouseClicked="#start" fitHeight="63.519530691505466" fitWidth="56.13353729248047" layoutX="30.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="63.519530691505466" fitWidth="56.13353729248047" layoutX="30.0" layoutY="18.0" onMouseClicked="#start" pickOnBounds="true" preserveRatio="true">
               <image>
                 <Image url="@iconGRAY.png" />
               </image>
@@ -33,13 +33,13 @@
             </Text>
             <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
               <children>
-                <Button fx:id="find"  onAction="#find" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
+                <Button fx:id="find" layoutX="0.0" layoutY="21.0" mnemonicParsing="false" onAction="#find" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="FIND" textFill="WHITE">
                   <font>
                     <Font size="20.0" fx:id="x2" />
                   </font>
                 </Button>
-                <Button fx:id="account" onAction="#account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
-                <Button fx:id="logout" onAction="#logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="MY ACCOUNT" textFill="WHITE" />
+                <Button fx:id="logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="LOGOUT" textFill="$x3" />
               </children>
             </AnchorPane>
           </children>

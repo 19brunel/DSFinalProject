@@ -64,7 +64,17 @@ public class StartController implements Initializable {
 			logger.setText("LOGOUT");
 		}else {
 			find.setText("");
+			find.setStyle("-fx-background-color: rgba(0,0,0,0);\r\n" + 
+					"-fx-border-color: none;\r\n" + 
+					"-fx-border-radius: 50;\r\n" + 
+					"-fx-background-radius: 50;\r\n" + 
+					"-fx-border-width: 0;\r\n");
 			account.setText("");
+			account.setStyle("-fx-background-color: rgba(0,0,0,0);\r\n" + 
+					"-fx-border-color: none;\r\n" + 
+					"-fx-border-radius: 50;\r\n" + 
+					"-fx-background-radius: 50;\r\n" + 
+					"-fx-border-width: 0;\r\n");
 			logger.setText("LOGIN");
 		}
 	}

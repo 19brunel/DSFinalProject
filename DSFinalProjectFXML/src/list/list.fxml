@@ -38,13 +38,13 @@
             </Text>
             <AnchorPane layoutX="558.0" layoutY="16.0" maxHeight="500.0" minWidth="500.0" prefHeight="75.0" prefWidth="500.0">
               <children>
-                <Button layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="FIND" textFill="WHITE">
+                <Button layoutX="0.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="FIND" textFill="WHITE">
                   <font>
                     <Font size="20.0" fx:id="x2" />
                   </font>
                 </Button>
-                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="MY ACCOUNT" textFill="WHITE" />
-                <Button fx:id="logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border: none;&#10;-fx-background-corner: 0px;&#10;" text="LOGOUT" textFill="$x3" />
+                <Button fx:id="account" font="$x2" layoutX="172.0" layoutY="21.0" mnemonicParsing="false" onAction="#account" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="MY ACCOUNT" textFill="WHITE" />
+                <Button fx:id="logout" font="$x2" layoutX="389.0" layoutY="21.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: rgba(0,0,0,0);&#10;-fx-border-color: WHITE;&#10;-fx-border-radius: 50;&#10;-fx-background-radius: 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;" text="LOGOUT" textFill="$x3" />
               </children>
             </AnchorPane>
           </children>
@@ -57,7 +57,7 @@
                 <Font name="Century Gothic" size="30.0" fx:id="x5" />
               </font>
             </Text>
-            <ChoiceBox fx:id="cuisine" layoutX="14.0" layoutY="134.0" prefHeight="39.90234375" prefWidth="272.0">
+            <ChoiceBox fx:id="cuisine" layoutX="14.0" layoutY="134.0" prefHeight="39.90234375" prefWidth="272.0" style="-fx-background-color: WHITE;&#10;-fx-fill: #e31c60;&#10;-fx-border-color: #e31c60;&#10;-fx-background-radius: 40;&#10;-fx-border-radius: 40;&#10;-fx-border-width: 2;&#10;">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="None" />
@@ -67,7 +67,7 @@
                 </FXCollections>
               </items>
             </ChoiceBox>
-            <ChoiceBox fx:id="dinning" layoutX="14.0" layoutY="182.0" prefHeight="39.90234375" prefWidth="272.0">
+            <ChoiceBox fx:id="dinning" layoutX="14.0" layoutY="182.0" prefHeight="39.90234375" prefWidth="272.0" style="-fx-background-color: WHITE;&#10;-fx-fill: #e31c60;&#10;-fx-border-color: #e31c60;&#10;-fx-background-radius: 40;&#10;-fx-border-radius: 40;&#10;-fx-border-width: 2;&#10;">
               <items>
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="None" />
@@ -80,18 +80,18 @@
             <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating" />
             <HBox fx:id="ratingButtons" layoutX="14.0" layoutY="288.0" prefHeight="52.0" prefWidth="272.0">
               <children>
-                <Button fx:id="subtract" mnemonicParsing="false" onAction="#subtract" text="-" />
+                <Button fx:id="subtract" mnemonicParsing="false" onAction="#subtract" prefWidth="32.0" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-radius: 10;&#10;-fx-border-radius: 0;&#10;" text="-" textAlignment="CENTER" textFill="WHITE" />
                 <ImageView fx:id="rating" fitHeight="36.7822265625" fitWidth="49.04296875" pickOnBounds="true" preserveRatio="true" />
-                <Button fx:id="add" mnemonicParsing="false" onAction="#add" text="+" />
+                <Button fx:id="add" minWidth="17.0" mnemonicParsing="false" onAction="#add" prefWidth="32.0" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-radius: 10;&#10;-fx-border-radius: 0;&#10;" text="+" textAlignment="CENTER" textFill="WHITE" />
               </children>
             </HBox>
             <Text fill="$x3" font="$x5" layoutX="14.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum Price" />
             <Label font="$x5" layoutX="14.0" layoutY="371.0" text="\$" textFill="$x6" />
-            <TextField fx:id="minPrice" layoutX="36.0" layoutY="375.0" prefHeight="30.000099999997474" prefWidth="104.0" promptText="Enter min price" style="-fx-font-size: 20;&#10;-fx-fill: rgb(227,28,96);&#10;&#10;" text="0" />
-            <Button fx:id="apply" font="$x5" layoutX="28.0" layoutY="462.0" mnemonicParsing="false" onAction="#apply" text="APPLY FILTERS" />
+            <TextField fx:id="minPrice" alignment="CENTER" layoutX="36.0" layoutY="375.0" prefHeight="30.000099999997474" prefWidth="104.0" promptText="Enter min price" style="-fx-font-size: 20;&#10;-fx-fill: rgb(227,28,96);&#10;-fx-background-color: WHITE;&#10;-fx-border-color: #e31c60;&#10;-fx-border-radius: 50 50 50 50;&#10;-fx-background-radius: 50 50 50 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;&#10;&#10;" text="0" />
+            <Button fx:id="apply" font="$x5" layoutX="28.0" layoutY="462.0" mnemonicParsing="false" onAction="#apply" style="-fx-background-color: #e31c60;&#10;-fx-fill: WHITE;&#10;-fx-border: none;&#10;-fx-background-radius: 50;&#10;-fx-border-radius: 0;&#10;" text="APPLY FILTERS" textFill="WHITE" />
             <Text fill="#424242" font="$x5" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search by name" />
-            <TextField fx:id="search" layoutX="14.0" layoutY="51.0" prefHeight="30.0" prefWidth="198.3876953125" promptText="Restaurant Name" style="-fx-font-size: 15;&#10;-fx-fill: rgb(227,28,96);&#10;&#10;" text="" />
-            <Button fx:id="searchButton" graphicTextGap="2.0" layoutX="213.0" layoutY="51.0" minHeight="31.0" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="73.0" text="SEARCH" textAlignment="CENTER">
+            <TextField fx:id="search" layoutX="14.0" layoutY="51.0" prefHeight="31.0" prefWidth="199.0" promptText="Restaurant Name" style="-fx-font-size: 15;&#10;-fx-fill: rgb(227,28,96);&#10;-fx-background-color: WHITE;&#10;-fx-border-color: #e31c60;&#10;-fx-border-radius: 50 0 0 50;&#10;-fx-background-radius: 50 0 0 50;&#10;-fx-border-width: 2 2 2 2;&#10;&#10;&#10;&#10;" text="" />
+            <Button fx:id="searchButton" graphicTextGap="2.0" layoutX="213.0" layoutY="51.0" minHeight="30.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: #e31c60;&#10;-fx-border: none;&#10;-fx-background-radius: 0 10 10 0;&#10;-fx-border-radius: 0;&#10;" text="SEARCH" textAlignment="CENTER" textFill="WHITE">
               <font>
                 <Font name="Century Gothic" size="12.0" />
               </font>
