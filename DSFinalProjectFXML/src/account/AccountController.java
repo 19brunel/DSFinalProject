@@ -50,6 +50,7 @@ public class AccountController {
 		thisStage = (Stage)((Node)wrap.getEvent().getSource()).getScene().getWindow();
 		user = wrap.getUser();
 		name = new Text(user.getName().toUpperCase());
+		name.setStyle("-fx-fill: #e31c60 ; -fx-font-size: 50;");
 		username = new Text(user.getUsername());
 		password = new Text(user.getPassword());
 		email = new Text(user.getEmail().getEmail());
@@ -57,19 +58,30 @@ public class AccountController {
 		HBox userName = new HBox(new Text("USERNAME: "), username);
 		userName.setPadding(new Insets(10));
 		userName.setAlignment(Pos.CENTER);
+		userName.setStyle("-fx-fill: #424242; -fx-font-size: 30;");
 		HBox passWord = new HBox(new Text("PASSWORD: "), password);
 		passWord.setPadding(new Insets(10));
 		passWord.setAlignment(Pos.CENTER);
+		passWord.setStyle("-fx-fill: #424242; -fx-font-size: 30;");
 		HBox login = new HBox(userName, passWord);
 		login.setAlignment(Pos.CENTER);
 		login.setPadding(new Insets(10));
+		login.setStyle("-fx-fill: #424242; -fx-font-size: 30;");
 		HBox eMail = new HBox(new Text("EMAIL: "), email);
 		eMail.setPadding(new Insets(10));
 		eMail.setAlignment(Pos.CENTER);
+		eMail.setStyle("-fx-fill: #424242; -fx-font-size: 30;");
 		HBox phNumber = new HBox(new Text("PHONE NUMBER: "), phoneNumber);
 		phNumber.setPadding(new Insets(10));
 		phNumber.setAlignment(Pos.CENTER);
+		phNumber.setStyle("-fx-fill: #424242; -fx-font-size: 30;"); 
 		edit = new Button("EDIT");
+		edit.setStyle("-fx-background-color: rgba(0,0,0,0);\r\n" + 
+				"-fx-border-color: rgb(227,28,96);\r\n" + 
+				"-fx-fill: rgb(227,28,96);\r\n" + 
+				"-fx-border-radius: 50;\r\n" + 
+				"-fx-background-radius: 50;\r\n" + 
+				"-fx-border-width: 2;\r\n"+"-fx-font-size: 30;\r\n");
 		edit.setOnAction(new EventHandler<ActionEvent>() {
     		@Override
     		public void handle(ActionEvent event) {

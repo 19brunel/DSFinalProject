@@ -14,12 +14,12 @@
   <children>
     <AnchorPane prefHeight="400.0" prefWidth="600.0">
       <children>
-        <Button fx:id="cancelButton" layoutX="27.0" layoutY="360.0" mnemonicParsing="false" onAction="#exit" text="CANCEL">
+        <Button fx:id="cancelButton" layoutX="27.0" layoutY="360.0" mnemonicParsing="false" onAction="#exit" style="-fx-background-color: #e31c60 ;&#10;-fx-border: none;&#10;-fx-background-radius: 60;&#10;-fx-fill: WHITE;" text="CANCEL" textFill="WHITE">
           <font>
             <Font name="Century Gothic" size="12.0" fx:id="x1" />
           </font>
         </Button>
-        <Button fx:id="doneButton" font="$x1" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" onAction="#submit" text="DONE" />
+        <Button fx:id="doneButton" font="$x1" layoutX="519.0" layoutY="360.0" mnemonicParsing="false" onAction="#submit" style="-fx-background-color: #e31c60 ;&#10;-fx-border: none;&#10;-fx-background-radius: 60;&#10;-fx-fill: WHITE;" text="DONE" textFill="WHITE" />
         <Text fill="#e31c60" layoutX="155.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDIT ACCOUNT">
           <font>
             <Font name="Century Gothic" size="40.0" />
@@ -34,13 +34,9 @@
           </textFill>
         </Label>
         <Label font="$x2" layoutX="145.0" layoutY="148.0" text="USERNAME" textFill="$x3" />
-        <Label font="$x2" layoutX="145.0" layoutY="198.0" text="PASSWORD">
-          <textFill>
-            <Color blue="0.259" green="0.259" red="0.259" fx:id="x4" />
-          </textFill>
-        </Label>
-        <Label font="$x2" layoutX="145.0" layoutY="248.0" text="EMAIL" textFill="$x4" />
-        <Label font="$x2" layoutX="145.0" layoutY="298.0" text="PHONE NUMBER" textFill="$x4" />
+        <Label font="$x2" layoutX="145.0" layoutY="198.0" text="PASSWORD" textFill="$x3" />
+        <Label font="$x2" layoutX="145.0" layoutY="248.0" text="EMAIL" textFill="$x3" />
+        <Label font="$x2" layoutX="145.0" layoutY="298.0" text="PHONE NUMBER" textFill="$x3" />
         <TextField fx:id="name" layoutX="209.0" layoutY="100.0" prefWidth="290.56640625" />
         <TextField fx:id="username" layoutX="255.0" layoutY="150.0" prefWidth="245.0" />
         <PasswordField fx:id="password" layoutX="261.0" layoutY="200.0" prefWidth="239.0" />

@@ -24,11 +24,13 @@ public class OrderController {
 	public OrderController(OrderListWrapper wrap) {
 		order = wrap.getOrder();
 		title = new Text("MY ORDER:");
+		title.setStyle("-fx-fill: rgb(227,28,96); -fx-font-size: 20;");
 		orderList = new ListView<FoodItem>();
 		orderList.setStyle("-fx-background-color: #efefef;");
 		orderList.setPadding(new Insets(10));
 		this.wrap = wrap;
 		total = new Text("TOTAL: $"+this.getOrderTotal());
+		total.setStyle("-fx-fill: rgb(227,28,96); -fx-font-size: 20;");
 		container = new VBox(title, orderList, total);
 		container.setStyle("-fx-background-color: #efefef;");
 		container.setAlignment(Pos.CENTER_LEFT);

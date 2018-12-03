@@ -37,6 +37,13 @@ public class OrderListCell extends ListCell<FoodItem>{
 		price.minWidth(50);
 		button = new Button();
 		namePrice = new HBox(price, itemName, button);
+		button.setStyle("-fx-background-color: rgba(0,0,0,0);\r\n" + 
+				"-fx-border-color: rgb(227,28,96);\r\n" + 
+				"-fx-fill: rgb(227,28,96);\r\n" + 
+				"-fx-border-radius: 50;\r\n" + 
+				"-fx-background-radius: 50;\r\n" + 
+				"-fx-border-width: 2;\r\n");
+		namePrice.setStyle("-fx-background-color: #efefef;");
 		namePrice.prefHeight(100);
 		namePrice.minHeight(100);
 		namePrice.setMinHeight(100);
